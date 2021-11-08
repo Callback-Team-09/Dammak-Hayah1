@@ -16,21 +16,21 @@
 <h2>Sign in Page</h2>
 <div class="container" id="container">
   <div class="form-container sign-up-container">
-    <form action="#">
+    <form action="/perform_login" method="post">
       <h1>Sign in as Hospitals Account </h1>
-      <input type="text" placeholder="Name" />
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <button>Sign in</button>
+      <input type="text" name="username" id="username" placeholder="Name" />
+      <input type="text" name="password"  id="password" placeholder="Email" />
+      <input type="submit">
+
     </form>
   </div>
   <div class="form-container sign-in-container">
-    <form action="#">
-      <h1>Sign in as Donor Account</h1>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <a href="#">To create a new account? click here</a>
-      <button>Sign In</button>
+    <form action="/perform_login" method="post">
+      <h1>Sign in as Hospitals Account </h1>
+      <input type="text" name="username" id="username" placeholder="Name" />
+      <input type="text" name="password"  id="password" placeholder="Email" />
+      <input type="submit">
+
     </form>
   </div>
   <div class="overlay-container">

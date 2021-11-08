@@ -6,26 +6,30 @@ import com.dammak.project401.UserRepo;
 import com.dammak.project401.models.AppUser;
 import com.dammak.project401.models.Hospital;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
+@Controller
 public class UserController {
+    @Autowired
+    PasswordEncoder encoder;
     @Autowired
     HospitalRepo hospitalRepo;
     @Autowired
     UserRepo userRepo;
-    @Autowired
-    UserDetailsServiceImpl userDetailsService;
+//    @Autowired
+//    UserDetailsServiceImpl userDetailsService;
 
-    @Autowired
-    PasswordEncoder encoder;
+
 
 
     @GetMapping("/login")
@@ -33,22 +37,33 @@ public class UserController {
     }
 
     @GetMapping("/signup")
-    public String getSignUpPage(){
+    public String getSignUpPage()
+    {
         return "signup";
     }
-    @GetMapping("/")
+
+    @GetMapping("/hello")
     public String test(){
         return "hello word";
     }
 
     @PostMapping("/signup")
     public RedirectView signUpUser(@RequestParam String username, @RequestParam String password, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String dateOfBirth, @RequestParam String blodType
-            , @RequestParam String placeName , @RequestParam String emailAdress , @RequestParam String phoneNum  ){
+            , @RequestParam String placeName , @RequestParam String emailAdress , @RequestParam String phoneNum ){
         AppUser appUser = new AppUser(username, encoder.encode(password),firstName,lastName,dateOfBirth,blodType,placeName,emailAdress,phoneNum,"ROLE_USER");
         userRepo.save(appUser);
 
         return new RedirectView("/login");
 
+    }
+    @GetMapping("/myprofile")
+    public String profile(Principal p,Model m){
+       AppUser appUser = userRepo.findByUsername(p.getName());
+       if (appUser.getAuthority() == "admin"){
+
+           return  "signup";
+       }
+       return "profile";
     }
 
     @GetMapping("/user/{id}")

@@ -29,6 +29,7 @@ public class AppUser implements UserDetails {
     private String placeName;
     private String emailAdress;
     private String phoneNum;
+    private String authority;
     @JsonInclude
     @ManyToMany(mappedBy = "donors")
     private Set<Hospital> hospitals;
@@ -37,7 +38,21 @@ public class AppUser implements UserDetails {
 
     public AppUser(){}
 
-    public AppUser(String username, String password, String firstName, String lastName, String dateOfBirth, String blodType,String authority, String placeName, String emailAdress, String phoneNum) {
+//    public AppUser(String username, String password, String firstName, String lastName, String dateOfBirth, String blodType,String authority, String placeName, String emailAdress, String phoneNum,String authority) {
+//        this.username = username;
+//        this.password = password;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.dateOfBirth = dateOfBirth;
+//        this.blodType = blodType;
+//        this.placeName=placeName;
+//        this.emailAdress=emailAdress;
+//        this.phoneNum=phoneNum;
+//        this.authority = authority;
+//
+//    }
+
+    public AppUser(String username, String password, String firstName, String lastName, String dateOfBirth, String blodType, String placeName, String emailAdress, String phoneNum, String role_user) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -47,7 +62,7 @@ public class AppUser implements UserDetails {
         this.placeName=placeName;
         this.emailAdress=emailAdress;
         this.phoneNum=phoneNum;
-
+        this.authority = role_user;
     }
 //    public AppUser(String username, String password){
 //        this.username = username;
@@ -169,13 +184,13 @@ public class AppUser implements UserDetails {
         return id;
     }
 
-//    public String getAuthority() {
-//        return authority;
-//    }
-//
-//    public void setAuthority(String authority) {
-//        this.authority = authority;
-//    }
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
 
     public Set<Hospital> getHospitals() {
         return hospitals;
