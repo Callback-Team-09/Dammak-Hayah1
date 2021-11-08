@@ -1,16 +1,15 @@
 package com.dammak.project401.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.sun.source.doctree.SeeTree;
 import org.springframework.data.annotation.Id;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.*;
 
 @Entity
 public class AppUser implements UserDetails {
