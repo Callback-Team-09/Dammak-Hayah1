@@ -108,5 +108,7 @@ public class Hospital {
         this.id = id;
     }
 
-
+    public String getUsername() {
+        return username;
+    }
 }
