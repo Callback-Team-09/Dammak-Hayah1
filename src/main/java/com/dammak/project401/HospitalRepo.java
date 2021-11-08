@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface HospitalRepo extends CrudRepository<Hospital,Long> {
-//    Hospital findByPlaceName(String placeName);
+    //    Hospital findByPlaceName(String placeName);
     Hospital findByUsername(String username);
     List<Hospital> findAllByPlaceName(String placeName);
 
