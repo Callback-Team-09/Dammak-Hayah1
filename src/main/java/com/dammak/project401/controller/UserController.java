@@ -8,10 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
+
 import java.security.Principal;
-import java.util.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 @Controller
 public class UserController {
@@ -33,8 +41,11 @@ public class UserController {
     @GetMapping("/signup")
     public String getSignUpPage()
     {
+
+
         return "signup";
     }
+
 
     @GetMapping("/hello")
     public String test(){
@@ -46,7 +57,7 @@ public class UserController {
             , @RequestParam String placeName , @RequestParam String emailAdress , @RequestParam String phoneNum ){
 
 
-        AppUser appUser = new AppUser(username, encoder.encode(password),firstName,lastName,dateOfBirth,blodType,placeName,emailAdress,phoneNum,"ROLE_USER","yse");
+        AppUser appUser = new AppUser(username, encoder.encode(password),firstName,lastName,dateOfBirth,blodType,placeName,emailAdress,phoneNum,"ROLE_USER","yes");
         userRepo.save(appUser);
 
         return new RedirectView("/login");
@@ -105,6 +116,7 @@ public String userProfile(Principal p , Model m){
         return "nearHospital";
 
     }
+
     @GetMapping("/addhospital/{hospitalId}")
     public RedirectView addHospital(@PathVariable Long hospitalId, Principal p,Model m){
         Hospital hospital = hospitalRepo.findById(hospitalId).get();
@@ -118,6 +130,8 @@ public String userProfile(Principal p , Model m){
         hospitalRepo.save(hospital);
         return new RedirectView("/neaarhospital");
     }
+
+
     @GetMapping("/getDonors/{type}")
     public String getDoners(Principal p,Model m,@PathVariable String type){
 //        java.util.Date utilDate = new java.util.Date();
@@ -125,14 +139,18 @@ public String userProfile(Principal p , Model m){
 
         ArrayList<AppUser> doonersList = new ArrayList<>();
         Hospital hospital = hospitalRepo.findByUsername(p.getName());
-//        for (AppUser doners : hospital.getDonors()) {
-//            if ( doners.getDonatDate().equals(null)) {
-//                doners.setStatus("yes");
-//            }else if(  < doners.getDonatDate()){
-//
-//            }
-//
-//        }
+        for (AppUser doners : hospital.getDonors()) {
+            if ( doners.getStatus().equals("no")) {
+                LocalDate current = LocalDate.now();
+                LocalDate testIf = doners.getDonatDate().toLocalDate();
+
+                if(current.equals(testIf.plusMonths(3)) || !current.isAfter(testIf.plusMonths(3))){
+                    doners.setStatus("yes");
+                    userRepo.save(doners);
+                }
+
+            }
+        }
         if(hospital.getDonors().isEmpty()){
             m.addAttribute("on",0);
         }
@@ -161,8 +179,8 @@ public String userProfile(Principal p , Model m){
                 }
 
             }
-            }
-            else if (type.equals("a+")){
+        }
+        else if (type.equals("a+")){
             for (AppUser doners : hospital.getDonors()) {
                 if (doners.getBlodType().equals("a+")) {
                     doonersList.add(doners);
@@ -200,13 +218,14 @@ public String userProfile(Principal p , Model m){
 
             }
         }
-            m.addAttribute("word",type);
+        m.addAttribute("word",type);
         m.addAttribute("doners",doonersList);
         m.addAttribute("on",1);
 //
 
         return  "donerss";
     }
+
     @GetMapping("confermDonate/{userId}")
     public RedirectView confarmDonate (Principal p, Model m,@PathVariable Long userId){
 
@@ -216,10 +235,7 @@ public String userProfile(Principal p , Model m){
         appUser.setDonatDate(new java.sql.Date(utilDate.getTime()));
         appUser.setStatus("no");
         userRepo.save(appUser);
-        return new RedirectView("getDonors/all");
+        return new RedirectView("/getDonors/all");
     }
-
-
-
 
 }
