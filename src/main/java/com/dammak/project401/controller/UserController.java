@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.*;
 
 @Controller
@@ -125,14 +126,18 @@ public String userProfile(Principal p , Model m){
 
         ArrayList<AppUser> doonersList = new ArrayList<>();
         Hospital hospital = hospitalRepo.findByUsername(p.getName());
-//        for (AppUser doners : hospital.getDonors()) {
-//            if ( doners.getDonatDate().equals(null)) {
-//                doners.setStatus("yes");
-//            }else if(  < doners.getDonatDate()){
-//
-//            }
-//
-//        }
+        for (AppUser doners : hospital.getDonors()) {
+            if ( doners.getStatus().equals("no")) {
+                LocalDate current = LocalDate.now();
+              LocalDate testIf = doners.getDonatDate().toLocalDate();
+              testIf.plusMonths(3);
+              if(current.equals(testIf) || !testIf.isAfter(current)){
+                  doners.setStatus("yes");
+                  userRepo.save(doners);
+              }
+
+            }
+        }
         if(hospital.getDonors().isEmpty()){
             m.addAttribute("on",0);
         }

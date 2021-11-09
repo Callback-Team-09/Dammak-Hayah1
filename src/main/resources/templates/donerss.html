@@ -152,9 +152,16 @@
                     <h1 th:text="${doner.phoneNum}"></h1>
                     <h1 th:text="${doner.emailAdress}"></h1>
                     <h1 th:text="${doner.dateOfBirth}"></h1>
-                    <p th:text="${doner.getDonatDate()}" class="card-title"></p>
 
-                    <a th:href="@{'/confermDonate/'+${doner.id}}"> confarm</a>
+                    <th:block th:switch="${doner.getStatus()}">
+                        <th:block th:case="'yes'">
+                            <a th:href="@{'/confermDonate/'+${doner.id}}"> confarm</a>
+                        </th:block>
+                        <th:block th:case="'no'">
+                            <p th:text="${doner.getDonatDate()}" ></p>
+                        </th:block>
+
+
 
 
                 </div>
