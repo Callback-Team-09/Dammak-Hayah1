@@ -39,7 +39,7 @@ body {
 
 .btn-primary {
   color: #fff;
-  background: #00b3b3;
+  background: #053742;
 }
 
 .btn-primary:hover {
@@ -369,6 +369,10 @@ body {
   padding: 1rem;
 }
 
+input{
+border-radius:8px;
+}
+
 .customer-photo img {
   display: block;
   width: 150px;
@@ -383,12 +387,13 @@ body {
 
 #contact {
   padding: 5rem 0;
-  background: rgb(226, 226, 226);
+  background: #f2f4f8;
 }
 
 .contact-container {
   display: flex;
-  background: #fff;
+  background: #f2f4f8;
+
 }
 .headCont{
   text-align:center;

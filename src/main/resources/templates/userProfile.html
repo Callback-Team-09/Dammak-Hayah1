@@ -9,8 +9,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link th:href="userProfile.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="navBar.css" />
+  <link rel="stylesheet" href="signup.css" />
+  <link rel="stylesheet" href="footer.css" />
 </head>
 <body>
+
+<div th:replace="navBar :: nav"></div>
+
+
 <div id="user-profile-2" class="user-profile">
   <div class="tabbable">
 
@@ -98,5 +105,7 @@
     </div>
   </div>
 </div>
+<div th:replace="footer :: footer"></div>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </body>
 </html>

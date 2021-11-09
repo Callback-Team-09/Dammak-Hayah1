@@ -76,7 +76,7 @@
 //public String userProfile(Principal p , Model m){
 //        AppUser appUser = userRepo.findByUsername(p.getName());
 //        m.addAttribute("userInformatiom",appUser);
-//        return "userProfile";
+//        return "home";
 //}
 //    @GetMapping("/user/{id}")
 //    public String getUser(Principal p, Model model, @PathVariable Long id) {
@@ -198,6 +198,10 @@
 //    }
 //
 //
+//        @GetMapping("/")
+//    public String getRoot() {
+//        return "Home";
+//    }
 //
 //
 //}
