@@ -8,18 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -41,11 +34,8 @@ public class UserController {
     @GetMapping("/signup")
     public String getSignUpPage()
     {
-
-
         return "signup";
     }
-
 
     @GetMapping("/hello")
     public String test(){
@@ -66,12 +56,12 @@ public class UserController {
     @GetMapping("/myprofile")
     public String profile(Principal p){
 
-       AppUser appUser = userRepo.findByUsername(p.getName());
+        AppUser appUser = userRepo.findByUsername(p.getName());
         String auth = appUser.getAuthority();
 
         System.out.println("ssssssssssssssssssssssssss"+appUser.getAuthority().toLowerCase(Locale.ROOT));
 
-       return "/"+auth;
+        return "/"+auth;
     }
     @GetMapping("/admin")
     public String hospitalProfil(Principal p, Model m){
@@ -79,12 +69,12 @@ public class UserController {
         m.addAttribute("hospitalname",p.getName());
         return "donerss";
     }
-@GetMapping("/ROLE_USER")
-public String userProfile(Principal p , Model m){
+    @GetMapping("/ROLE_USER")
+    public String userProfile(Principal p , Model m){
         AppUser appUser = userRepo.findByUsername(p.getName());
         m.addAttribute("userInformatiom",appUser);
         return "userProfile";
-}
+    }
     @GetMapping("/user/{id}")
     public String getUser(Principal p, Model model, @PathVariable Long id) {
         model.addAttribute("usernamePrincipal", p.getName());
@@ -116,7 +106,6 @@ public String userProfile(Principal p , Model m){
         return "nearHospital";
 
     }
-
     @GetMapping("/addhospital/{hospitalId}")
     public RedirectView addHospital(@PathVariable Long hospitalId, Principal p,Model m){
         Hospital hospital = hospitalRepo.findById(hospitalId).get();
@@ -130,8 +119,6 @@ public String userProfile(Principal p , Model m){
         hospitalRepo.save(hospital);
         return new RedirectView("/neaarhospital");
     }
-
-
     @GetMapping("/getDonors/{type}")
     public String getDoners(Principal p,Model m,@PathVariable String type){
 //        java.util.Date utilDate = new java.util.Date();
@@ -144,7 +131,7 @@ public String userProfile(Principal p , Model m){
                 LocalDate current = LocalDate.now();
                 LocalDate testIf = doners.getDonatDate().toLocalDate();
 
-                if(current.equals(testIf.plusMonths(3)) || !current.isAfter(testIf.plusMonths(3))){
+                if(current.equals(testIf.plusMonths(3)) || current.isAfter(testIf.plusMonths(3))){
                     doners.setStatus("yes");
                     userRepo.save(doners);
                 }
@@ -225,11 +212,10 @@ public String userProfile(Principal p , Model m){
 
         return  "donerss";
     }
+    @GetMapping("confirmDonate/{userId}")
+    public RedirectView confirmDonate (Principal p, Model m,@PathVariable Long userId){
 
-    @GetMapping("confermDonate/{userId}")
-    public RedirectView confarmDonate (Principal p, Model m,@PathVariable Long userId){
-
-//        Hospital hospital = hospitalRepo.findByUsername(p.getName());
+        Hospital hospital = hospitalRepo.findByUsername(p.getName());
         AppUser appUser = userRepo.findById(userId).get();
         java.util.Date utilDate = new java.util.Date();
         appUser.setDonatDate(new java.sql.Date(utilDate.getTime()));
