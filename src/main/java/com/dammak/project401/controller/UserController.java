@@ -1,9 +1,12 @@
 package com.dammak.project401.controller;
 
 import com.dammak.project401.HospitalRepo;
+import com.dammak.project401.NumberRepo;
 import com.dammak.project401.UserRepo;
 import com.dammak.project401.models.AppUser;
 import com.dammak.project401.models.Hospital;
+import com.dammak.project401.models.NumberDonate;
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -22,8 +25,8 @@ public class UserController {
     HospitalRepo hospitalRepo;
     @Autowired
     UserRepo userRepo;
-
-
+    @Autowired
+    NumberRepo numberRepo;
 
 
 
@@ -47,11 +50,22 @@ public class UserController {
             , @RequestParam String placeName , @RequestParam String emailAdress , @RequestParam String phoneNum ){
 
 
-        AppUser appUser = new AppUser(username, encoder.encode(password),firstName,lastName,dateOfBirth,blodType,placeName,emailAdress,phoneNum,"ROLE_USER","yse",0);
+        AppUser appUser = new AppUser(username, encoder.encode(password),firstName,lastName,dateOfBirth,blodType,placeName,emailAdress,phoneNum,"ROLE_USER","yes",0);
         userRepo.save(appUser);
-
+        NumberDonate numberDonate = numberRepo.findByUsername("global");
+        numberDonate.setNumberOfUser(numberDonate.getNumberOfUser()+1);
+        numberRepo.save(numberDonate);
         return new RedirectView("/login");
 
+    }
+    @GetMapping("/")
+    public String homePage (Model m){
+        NumberDonate numberDonate = numberRepo.findByUsername("global");
+
+
+        m.addAttribute("number", numberDonate.getNumberOfDonate());
+        m.addAttribute("numberofuser",numberDonate.getNumberOfUser());
+        return  "home";
     }
     @GetMapping("/myprofile")
     public String profile(Principal p){
@@ -73,7 +87,7 @@ public class UserController {
 public String userProfile(Principal p , Model m){
         AppUser appUser = userRepo.findByUsername(p.getName());
         m.addAttribute("userInformatiom",appUser);
-        return "userProfile";
+        return "profile";
 }
     @GetMapping("/user/{id}")
     public String getUser(Principal p, Model model, @PathVariable Long id) {
@@ -131,7 +145,7 @@ public String userProfile(Principal p , Model m){
                 LocalDate current = LocalDate.now();
               LocalDate testIf = doners.getDonatDate().toLocalDate();
 
-              if(current.equals(testIf.plusMonths(3)) || !current.isAfter(testIf.plusMonths(3))){
+              if(current.equals(testIf.plusMonths(3)) || current.isAfter(testIf.plusMonths(3))){
                   doners.setStatus("yes");
                   userRepo.save(doners);
               }
@@ -146,6 +160,8 @@ public String userProfile(Principal p , Model m){
             m.addAttribute("doners",hospital.getDonors());
             m.addAttribute("on",1);
             m.addAttribute("word",type);
+            m.addAttribute("number",hospital.getNumnerOfDonat());
+
 
 
 
@@ -208,26 +224,41 @@ public String userProfile(Principal p , Model m){
             m.addAttribute("word",type);
         m.addAttribute("doners",doonersList);
         m.addAttribute("on",1);
+        m.addAttribute("number",hospital.getNumnerOfDonat());
 //
 
         return  "donerss";
     }
+
     @GetMapping("confermDonate/{userId}")
     public RedirectView confarmDonate (Principal p, Model m,@PathVariable Long userId){
 
 //        Hospital hospital = hospitalRepo.findByUsername(p.getName());
         AppUser appUser = userRepo.findById(userId).get();
-        java.util.Date utilDate = new java.util.Date();
-        appUser.setDonatDate(new java.sql.Date(utilDate.getTime()));
         appUser.setStatus("no");
         userRepo.save(appUser);
-        return new RedirectView("getDonors/all");
+
+        java.util.Date utilDate = new java.util.Date();
+        appUser.setDonatDate(new java.sql.Date(utilDate.getTime()));
+        userRepo.save(appUser);
+        return new RedirectView("/number/"+userId);
     }
 
+@GetMapping("/number/{userId}")
+    public RedirectView addNumberOfDoners(Principal p,@PathVariable Long userId) {
 
+    AppUser appUser = userRepo.findById(userId).get();
+    appUser.setNumberOfDonat(appUser.getNumberOfDonat() + 1);
+    Hospital hospital = hospitalRepo.findByUsername(p.getName());
+    hospital.setNumnerOfDonat(hospital.getNumnerOfDonat() + 1);
+    NumberDonate numberDonate = numberRepo.findByUsername("global");
 
-
-
+    numberDonate.setNumberOfDonate(numberDonate.getNumberOfDonate() + 1);
+    userRepo.save(appUser);
+    hospitalRepo.save(hospital);
+    numberRepo.save(numberDonate);
+    return new RedirectView("/getDonors/all");
+}
 
 
 }

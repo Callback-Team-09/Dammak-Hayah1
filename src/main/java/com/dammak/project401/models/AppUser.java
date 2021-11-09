@@ -226,4 +226,12 @@ public class AppUser implements UserDetails {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public int getNumberOfDonat() {
+        return numberOfDonat;
+    }
+
+    public void setNumberOfDonat(int numberOfDonat) {
+        this.numberOfDonat = numberOfDonat;
+    }
 }
