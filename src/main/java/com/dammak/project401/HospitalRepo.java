@@ -1,6 +1,6 @@
 package com.dammak.project401;
 
-import com.dammak.project401.models.AppUser;
+
 import com.dammak.project401.models.Hospital;
 import org.springframework.data.repository.CrudRepository;
 

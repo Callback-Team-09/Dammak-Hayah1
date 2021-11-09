@@ -11,28 +11,48 @@
 </head>
 <body>
 
-<!--<div th:replace="navBar :: nav"></div>-->
+
+<div class="table-row" th:each="doner:${userInformatiom}">
+    <h1 th:text="${doner.username}"></h1>
+    <h1 th:text="${doner.blodType}"></h1>
+    <h1 th:text="${doner.phoneNum}"></h1>
+    <h1 th:text="${doner.emailAdress}"></h1>
+    <h1 th:text="${doner.dateOfBirth}"></h1>
+
+    <th:block th:switch="${doner.getStatus()}">
+        <th:block th:case="'yes'">
+            <a > you can</a>
+        </th:block>
+        <th:block th:case="'no'">
+            <p  >you cant <span th:text="${doner.getDonatDate()}"></span></p>
+        </th:block>
+
+        <h1 th:text ="${doner.numberOfDonat}"></h1>
+
+
+
+        <!--<div th:replace="navBar :: nav"></div>-->
 <!--<br>-->
 <!--<h2>Sign in Page</h2>-->
 <!--<div class="container" id="container">-->
 <!--    <div class="form-container sign-up-container">-->
-<h1>hellllll0000000</h1>
-<form action="/signup" method="post">
-    <h1>Sign Up</h1>
-    <input type="text" name="username" id="username" placeholder="username" />
-    <input type="text" name="password" id="password" placeholder="password" />
-    <input type="text" name="firstName" id="firstName" placeholder="firstName" />
-    <input type="text" name="lastName" id="lastName" placeholder="lastName" />
-    <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="dateOfBirth" />
-    <input type="text" name="blodType" id="blodType" placeholder="blodType" />
-    <input type="text" name="placeName" id="placeName" placeholder="placeName" />
-    <input type="text" name="emailAdress" id="emailAdress" placeholder="emailAdress" />
-    <input type="text" name="phoneNum" id="phoneNum" placeholder="phoneNum" />
-    <input type="submit" >
+<!--<h1>hellllll0000000</h1>-->
+<!--<form action="/signup" method="post">-->
+<!--    <h1>Sign Up</h1>-->
+<!--    <input type="text" name="username" id="username" placeholder="username" />-->
+<!--    <input type="text" name="password" id="password" placeholder="password" />-->
+<!--    <input type="text" name="firstName" id="firstName" placeholder="firstName" />-->
+<!--    <input type="text" name="lastName" id="lastName" placeholder="lastName" />-->
+<!--    <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="dateOfBirth" />-->
+<!--    <input type="text" name="blodType" id="blodType" placeholder="blodType" />-->
+<!--    <input type="text" name="placeName" id="placeName" placeholder="placeName" />-->
+<!--    <input type="text" name="emailAdress" id="emailAdress" placeholder="emailAdress" />-->
+<!--    <input type="text" name="phoneNum" id="phoneNum" placeholder="phoneNum" />-->
+<!--    <input type="submit" >-->
 
     <!--            <a href="#">If you have an account? click here</a>-->
     <!--            <button>Sign Up</button>-->
-</form>
+<!--</form>-->
 <!--    </div>-->
 <!--    <div class="form-container sign-in-container">-->
 <!--        <form action="#">-->

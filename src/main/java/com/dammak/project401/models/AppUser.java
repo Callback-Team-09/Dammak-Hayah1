@@ -29,9 +29,12 @@ public class AppUser implements UserDetails {
     private String emailAdress;
     private String phoneNum;
     private String authority;
+    private java.sql.Date donatDate;
     @JsonInclude
     @ManyToMany(mappedBy = "donors")
     private Set<Hospital> hospitals;
+    private String status;
+    private int numberOfDonat;
 
 
 
@@ -51,7 +54,7 @@ public class AppUser implements UserDetails {
 //
 //    }
 
-    public AppUser(String username, String password, String firstName, String lastName, String dateOfBirth, String blodType, String placeName, String emailAdress, String phoneNum, String role_user) {
+    public AppUser(String username, String password, String firstName, String lastName, String dateOfBirth, String blodType, String placeName, String emailAdress, String phoneNum, String role_user,String status,int numberOfDonat) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -62,6 +65,8 @@ public class AppUser implements UserDetails {
         this.emailAdress=emailAdress;
         this.phoneNum=phoneNum;
         this.authority = role_user;
+        this.status = status;
+        this.numberOfDonat=numberOfDonat;
     }
 //    public AppUser(String username, String password){
 //        this.username = username;
@@ -206,5 +211,27 @@ public class AppUser implements UserDetails {
         this.id = id;
     }
 
+    public java.sql.Date getDonatDate() {
+        return donatDate;
+    }
 
+    public void setDonatDate(java.sql.Date donatDate) {
+        this.donatDate = donatDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getNumberOfDonat() {
+        return numberOfDonat;
+    }
+
+    public void setNumberOfDonat(int numberOfDonat) {
+        this.numberOfDonat = numberOfDonat;
+    }
 }
