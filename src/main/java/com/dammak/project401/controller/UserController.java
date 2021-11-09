@@ -47,7 +47,7 @@ public class UserController {
             , @RequestParam String placeName , @RequestParam String emailAdress , @RequestParam String phoneNum ){
 
 
-        AppUser appUser = new AppUser(username, encoder.encode(password),firstName,lastName,dateOfBirth,blodType,placeName,emailAdress,phoneNum,"ROLE_USER","yse");
+        AppUser appUser = new AppUser(username, encoder.encode(password),firstName,lastName,dateOfBirth,blodType,placeName,emailAdress,phoneNum,"ROLE_USER","yse",0);
         userRepo.save(appUser);
 
         return new RedirectView("/login");
@@ -130,8 +130,8 @@ public String userProfile(Principal p , Model m){
             if ( doners.getStatus().equals("no")) {
                 LocalDate current = LocalDate.now();
               LocalDate testIf = doners.getDonatDate().toLocalDate();
-              testIf.plusMonths(3);
-              if(current.equals(testIf) || !testIf.isAfter(current)){
+
+              if(current.equals(testIf.plusMonths(3)) || !current.isAfter(testIf.plusMonths(3))){
                   doners.setStatus("yes");
                   userRepo.save(doners);
               }
@@ -223,6 +223,9 @@ public String userProfile(Principal p , Model m){
         userRepo.save(appUser);
         return new RedirectView("getDonors/all");
     }
+
+
+
 
 
 

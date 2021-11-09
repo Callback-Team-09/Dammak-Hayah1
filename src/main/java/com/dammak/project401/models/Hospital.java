@@ -18,6 +18,7 @@ public class Hospital {
     private String username;
     private String placeName;
     private String password;
+    private int numnerOfDonat;
     @ManyToMany
     @JoinTable(
 
@@ -35,6 +36,7 @@ public class Hospital {
         this.username = username;
         this.password=password;
         this.placeName = placeName;
+
 
     }
 
@@ -111,4 +113,13 @@ public class Hospital {
     public String getUsername() {
         return username;
     }
+
+    public int getNumnerOfDonat() {
+        return numnerOfDonat;
+    }
+
+    public void setNumnerOfDonat(int numnerOfDonat) {
+        this.numnerOfDonat = numnerOfDonat;
+    }
+
 }

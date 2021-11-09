@@ -34,6 +34,7 @@ public class AppUser implements UserDetails {
     @ManyToMany(mappedBy = "donors")
     private Set<Hospital> hospitals;
     private String status;
+    private int numberOfDonat;
 
 
 
@@ -53,7 +54,7 @@ public class AppUser implements UserDetails {
 //
 //    }
 
-    public AppUser(String username, String password, String firstName, String lastName, String dateOfBirth, String blodType, String placeName, String emailAdress, String phoneNum, String role_user,String status) {
+    public AppUser(String username, String password, String firstName, String lastName, String dateOfBirth, String blodType, String placeName, String emailAdress, String phoneNum, String role_user,String status,int numberOfDonat) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -65,6 +66,7 @@ public class AppUser implements UserDetails {
         this.phoneNum=phoneNum;
         this.authority = role_user;
         this.status = status;
+        this.numberOfDonat=numberOfDonat;
     }
 //    public AppUser(String username, String password){
 //        this.username = username;
