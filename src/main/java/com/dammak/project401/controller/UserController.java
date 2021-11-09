@@ -1,21 +1,16 @@
 package com.dammak.project401.controller;
 
 import com.dammak.project401.HospitalRepo;
-import com.dammak.project401.Security.UserDetailsServiceImpl;
 import com.dammak.project401.UserRepo;
 import com.dammak.project401.models.AppUser;
 import com.dammak.project401.models.Hospital;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
-import java.time.LocalDate;
 import java.util.*;
 
 @Controller
@@ -26,8 +21,7 @@ public class UserController {
     HospitalRepo hospitalRepo;
     @Autowired
     UserRepo userRepo;
-//    @Autowired
-//    UserDetailsServiceImpl userDetailsService;
+
 
 
 
@@ -50,7 +44,9 @@ public class UserController {
     @PostMapping("/signup")
     public RedirectView signUpUser(@RequestParam String username, @RequestParam String password, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String dateOfBirth, @RequestParam String blodType
             , @RequestParam String placeName , @RequestParam String emailAdress , @RequestParam String phoneNum ){
-        AppUser appUser = new AppUser(username, encoder.encode(password),firstName,lastName,dateOfBirth,blodType,placeName,emailAdress,phoneNum,"ROLE_USER");
+
+
+        AppUser appUser = new AppUser(username, encoder.encode(password),firstName,lastName,dateOfBirth,blodType,placeName,emailAdress,phoneNum,"ROLE_USER","yse");
         userRepo.save(appUser);
 
         return new RedirectView("/login");
@@ -104,12 +100,13 @@ public String userProfile(Principal p , Model m){
 //        m.addAttribute("isHaveHospital",true);
         m.addAttribute("hospitalHave",appUser.getHospitals());
         m.addAttribute("neareHospitals",nearHospital);
+        m.addAttribute("user",appUser);
 
         return "nearHospital";
 
     }
     @GetMapping("/addhospital/{hospitalId}")
-    public String addHospital(@PathVariable Long hospitalId, Principal p,Model m){
+    public RedirectView addHospital(@PathVariable Long hospitalId, Principal p,Model m){
         Hospital hospital = hospitalRepo.findById(hospitalId).get();
         AppUser appUser = userRepo.findByUsername(p.getName());
         if (hospital.getDonors().contains(appUser)){
@@ -119,21 +116,35 @@ public String userProfile(Principal p , Model m){
             hospital.getDonors().add(appUser);
         }
         hospitalRepo.save(hospital);
-        return "/neaarhospital";
+        return new RedirectView("/neaarhospital");
     }
     @GetMapping("/getDonors/{type}")
     public String getDoners(Principal p,Model m,@PathVariable String type){
+//        java.util.Date utilDate = new java.util.Date();
+//int x = utilDate.getMonth();
 
         ArrayList<AppUser> doonersList = new ArrayList<>();
         Hospital hospital = hospitalRepo.findByUsername(p.getName());
+//        for (AppUser doners : hospital.getDonors()) {
+//            if ( doners.getDonatDate().equals(null)) {
+//                doners.setStatus("yes");
+//            }else if(  < doners.getDonatDate()){
+//
+//            }
+//
+//        }
         if(hospital.getDonors().isEmpty()){
             m.addAttribute("on",0);
         }
         if(type.equals("all")){
-//            List<AppUser> doner = ;
+//
             m.addAttribute("doners",hospital.getDonors());
+            m.addAttribute("on",1);
+            m.addAttribute("word",type);
 
-           return "donerss";
+
+
+            return "donerss";
 
         }else if (type.equals("o+")){
             for (AppUser doners : hospital.getDonors()){
@@ -151,39 +162,39 @@ public String userProfile(Principal p , Model m){
 
             }
             }
-            else if (type == "a+"){
+            else if (type.equals("a+")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType() == "a+") {
+                if (doners.getBlodType().equals("a+")) {
                     doonersList.add(doners);
                 }
 
-            }}else if (type == "a-"){
+            }}else if (type.equals("a-")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType() == "a-") {
+                if (doners.getBlodType().equals("a-")) {
                     doonersList.add(doners);
                 }
 
-            }}else if (type == "b+"){
+            }}else if (type.equals("b+")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType() == "b+") {
+                if (doners.getBlodType().equals("b+")) {
                     doonersList.add(doners);
                 }
 
-            }}else if (type == "b-"){
+            }}else if (type.equals("b-")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType() == "b-") {
+                if (doners.getBlodType().equals("b-")) {
                     doonersList.add(doners);
                 }
 
-            }}else if (type == "ab+"){
+            }}else if (type.equals("ab+")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType() == "ab+") {
+                if (doners.getBlodType().equals("ab+")) {
                     doonersList.add(doners);
                 }
 
-            } }else{
+            }}else if (type.equals("ab-")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType() == "ab-") {
+                if (doners.getBlodType().equals("ab-")) {
                     doonersList.add(doners);
                 }
 
@@ -195,6 +206,17 @@ public String userProfile(Principal p , Model m){
 //
 
         return  "donerss";
+    }
+    @GetMapping("confermDonate/{userId}")
+    public RedirectView confarmDonate (Principal p, Model m,@PathVariable Long userId){
+
+//        Hospital hospital = hospitalRepo.findByUsername(p.getName());
+        AppUser appUser = userRepo.findById(userId).get();
+        java.util.Date utilDate = new java.util.Date();
+        appUser.setDonatDate(new java.sql.Date(utilDate.getTime()));
+        appUser.setStatus("no");
+        userRepo.save(appUser);
+        return new RedirectView("getDonors/all");
     }
 
 

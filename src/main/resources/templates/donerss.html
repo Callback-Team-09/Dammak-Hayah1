@@ -120,6 +120,16 @@
 <!--</nav>-->
 <!--<div>-->
 <!--&lt;!&ndash;    <div class="container">&ndash;&gt;-->
+<!--<a th:href="@{'/getDonors/all'"> all</a>-->
+<a href="/getDonors/all">all</a>
+<a href="/getDonors/o+">o+</a>
+<a href="/getDonors/o-">o-</a>
+<a href="/getDonors/a+">a+</a>
+<a href="/getDonors/a-">a-</a>
+<a href="/getDonors/ab+">ab+</a>
+<a href="/getDonors/ab-">ab-</a>
+
+
 <h1 >Type: <span th:text="${word}"></span></h1>
         <th:block th:switch="${on}">
             <th:block th:case="'0'">
@@ -142,8 +152,14 @@
                     <h1 th:text="${doner.phoneNum}"></h1>
                     <h1 th:text="${doner.emailAdress}"></h1>
                     <h1 th:text="${doner.dateOfBirth}"></h1>
+                    <p th:text="${doner.getDonatDate()}" class="card-title"></p>
+
+                    <a th:href="@{'/confermDonate/'+${doner.id}}"> confarm</a>
+
+
                 </div>
             </th:block>
+
 
 <!--                    <h1></h1>-->
 
@@ -161,6 +177,6 @@
 
 <!--</div>-->
 
-<!--<script type="text/javascript" th:src="@{/js/login.js}"></script>-->
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
 </body>
 </html>

@@ -6,16 +6,25 @@
 
 
 </head>
+
 <body>
+
+
+
 <div  th:each="neareHospital:${neareHospitals}">
 
         <h1 th:text="${neareHospital.username}"></h1>
-    </div>
+    <a th:href="@{'/addhospital/'+${neareHospital.id}}"> Follow</a>
+
+</div>
 </div>
 <h1>dddddd</h1>
 <div  th:each="neareHospital:${hospitalHave}">
 
     <h1 th:text="${neareHospital.username}"></h1>
+    <a th:href="@{'/addhospital/'+${neareHospital.id}}"> unFollow</a>
+<!--    <h1 th:date=""-->
+    <p th:text="${user.getDonatDate()}" class="card-title"></p>
 </div>
 </div>
 </body>
