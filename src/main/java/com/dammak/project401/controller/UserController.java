@@ -60,11 +60,11 @@ public class UserController {
     }
     @GetMapping("/")
     public String homePage (Model m){
-        NumberDonate numberDonate = numberRepo.findByUsername("global");
-
-
-        m.addAttribute("number", numberDonate.getNumberOfDonate());
-        m.addAttribute("numberofuser",numberDonate.getNumberOfUser());
+//        NumberDonate numberDonate = numberRepo.findByUsername("global");
+//
+//
+//        m.addAttribute("number", numberDonate.getNumberOfDonate());
+//        m.addAttribute("numberofuser",numberDonate.getNumberOfUser());
         return  "home";
     }
 //    @GetMapping("/about")
@@ -87,6 +87,11 @@ public class UserController {
         AppUser doner = userRepo.findByUsername(p.getName());
         m.addAttribute("userInformatiom",doner);
         return "profile";
+    }
+    @GetMapping("/about")
+    public String getAboutUs(){
+
+        return "about";
     }
 
     @GetMapping("/user/{id}")
@@ -127,8 +132,8 @@ public class UserController {
         List<Hospital> nearHospital = hospitalRepo.findAllByPlaceName(appUser.getPlaceName());
         if (appUser.getHospitals().isEmpty()){
             m.addAttribute("isHaveHospital",false);
-            m.addAttribute("neareHospitals",nearHospital);
-            return "nearHospital";
+            m.addAttribute("neaarhospitals",nearHospital);
+            return "neaarhospital";
 
         }
         Set<Hospital> removeHospital = appUser.getHospitals();
@@ -139,10 +144,10 @@ public class UserController {
         }
 //        m.addAttribute("isHaveHospital",true);
         m.addAttribute("hospitalHave",appUser.getHospitals());
-        m.addAttribute("neareHospitals",nearHospital);
+        m.addAttribute("neaarhospitals",nearHospital);
         m.addAttribute("user",appUser);
 
-        return "nearHospital";
+        return "neaarhospital";
 
     }
     @GetMapping("/addhospital/{hospitalId}")

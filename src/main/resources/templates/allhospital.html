@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="navBar.css" />
+    <link rel="stylesheet" href="nearHospital.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"/>
+
+</head>
+<body>
+
+<div th:replace="navBar :: nav"></div>
+
+<h2>All  Hospital</h2>
+
+<div class="cont">
+
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div>
+                <div class="card p-3 py-4">
+                    <div class="text-center"> <img src="https://healthpayerintelligence.com/images/site/article_headers/_normal/2017-01-12-hospital.gif" width="100" class="rounded-circle"> </div>
+                    <div class="text-center mt-3"  th:each="allhospital:${allhospitals}">
+                        <h5 class="mt-2 mb-0"  th:text="${allhospital.username}"></h5> Place <span th:text="${allhospital.placeName}"></span>
+
+
+                        <div class="buttons"> <button class="btn btn-outline-primary px-4"> <a th:href="@{'/addhospital/'+${allhospital.id}}"> Add</a></button> </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    </div>
+
+    <h2>The Hospital That You Followed</h2>
+
+    <div class="cont">
+
+
+
+        <div class="container mt-5">
+            <div class="row d-flex justify-content-center">
+                <div>
+                    <div class="card p-3 py-4">
+                        <div class="text-center"> <img src="https://healthpayerintelligence.com/images/site/article_headers/_normal/2017-01-12-hospital.gif" width="100" class="rounded-circle"> </div>
+                        <div class="text-center mt-3" th:each="allhospital:${hospitalHave}">
+                            <h5 class="mt-2 mb-0"  th:text="${allhospital.username}"> </h5> Place<span  th:text="${allhospital.placeName}"></span>
+
+                             <button class="btn btn-outline-primary px-4"><a th:href="@{'/addhospital/'+${allhospital.id}}"> Remove</a></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div th:replace="footer :: footer"></div>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"/></script>
+</body>
+</html>

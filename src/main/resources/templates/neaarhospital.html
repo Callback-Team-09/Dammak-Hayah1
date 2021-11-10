@@ -23,12 +23,14 @@
             <div>
                 <div class="card p-3 py-4">
                     <div class="text-center"> <img src="https://healthpayerintelligence.com/images/site/article_headers/_normal/2017-01-12-hospital.gif" width="100" class="rounded-circle"> </div>
-                    <div class="text-center mt-3"  th:each="neareHospital:${neareHospitals}">
-                        <h5 class="mt-2 mb-0"  th:text="${neareHospital.username}"></h5> Place <span th:text="${neareHospital.placeName}"></span>
+                    <div class="text-center mt-3"  th:each="neaarhospital:${neaarhospitals}">
+                        <h5 class="mt-2 mb-0"  th:text="${neaarhospital.username}"></h5> Place <span th:text="${neaarhospital.placeName}"></span>
 
 
-                        <div class="buttons"> <button class="btn btn-outline-primary px-4"> <a th:href="@{'/addhospital/'+${neareHospital.id}}"> Add</a></button> </div>
+
+                        <div class="buttons"> <button class="btn btn-outline-primary px-4"> <a th:href="@{'/addhospital/'+${neaarhospital.id}}"> Add</a></button> </div>
                     </div>
+                </div>
 
             </div>
         </div>
@@ -50,10 +52,10 @@
             <div>
                 <div class="card p-3 py-4">
                     <div class="text-center"> <img src="https://healthpayerintelligence.com/images/site/article_headers/_normal/2017-01-12-hospital.gif" width="100" class="rounded-circle"> </div>
-                    <div class="text-center mt-3" th:each="neareHospital:${hospitalHave}">
-                        <h5 class="mt-2 mb-0"  th:text="${neareHospital.username}"> </h5> Place<span  th:text="${neareHospital.placeName}">></span>
+                    <div class="text-center mt-3" th:each="neaarhospital:${hospitalHave}">
+                        <h5 class="mt-2 mb-0"  th:text="${neaarhospital.username}"> </h5> Place<span  th:text="${neaarhospital.placeName}">></span>
 
-                        <div class="buttons"> <button class="btn btn-outline-primary px-4"><a th:href="@{'/addhospital/'+${neareHospital.id}}"> Remove</a>></button> </div>
+                        <div class="buttons"> <button class="btn btn-outline-primary px-4"><a th:href="@{'/addhospital/'+${neaarhospital.id}}"> Remove</a>></button> </div>
                     </div>
                 </div>
             </div>
