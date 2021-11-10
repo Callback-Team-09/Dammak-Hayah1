@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>$Title$</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link th:href="hospital.css" rel="stylesheet"/>
 
 </head>
@@ -19,7 +20,7 @@
         </li>
         <li class="has-subnav">
             <a href="/all">
-                <i class="fa fa-laptop fa-2x"></i>
+                <i class="fa fa-id-card-o fa-2x"></i>
                 <span class="nav-text">
                             All Donors
                         </span>
@@ -28,7 +29,7 @@
 
         <li class="has-subnav">
             <a href="/ap">
-                <i class="fa fa-laptop fa-2x"></i>
+                <i class="fa fa-id-card-o fa-2x"></i>
                 <span class="nav-text">
                             A+ Donors
                         </span>
@@ -37,7 +38,7 @@
 
         <li class="has-subnav">
             <a href="/an">
-                <i class="fa fa-laptop fa-2x"></i>
+                <i class="fa fa-id-card-o fa-2x"></i>
                 <span class="nav-text">
                             A- Donors
                         </span>
@@ -46,7 +47,7 @@
 
         <li class="has-subnav">
             <a href="/bp">
-                <i class="fa fa-laptop fa-2x"></i>
+                <i class="fa fa-id-card-o fa-2x"></i>
                 <span class="nav-text">
                             B+ Donors
                         </span>
@@ -55,7 +56,7 @@
 
         <li class="has-subnav">
             <a href="/bn">
-                <i class="fa fa-laptop fa-2x"></i>
+                <i class="fa fa-id-card-o fa-2x"></i>
                 <span class="nav-text">
                             B- Donors
                         </span>
@@ -64,7 +65,7 @@
 
         <li class="has-subnav">
             <a href="/abp">
-                <i class="fa fa-laptop fa-2x"></i>
+                <i class="fa fa-id-card-o fa-2x"></i>
                 <span class="nav-text">
                             AB+ Donors
                         </span>
@@ -73,7 +74,7 @@
 
         <li class="has-subnav">
             <a href="/abn">
-                <i class="fa fa-laptop fa-2x"></i>
+                <i class="fa fa-id-card-o fa-2x"></i>
                 <span class="nav-text">
                             AB- Donors
                         </span>
@@ -82,7 +83,7 @@
 
         <li class="has-subnav">
             <a href="/op">
-                <i class="fa fa-laptop fa-2x"></i>
+                <i class="fa fa-id-card-o fa-2x"></i>
                 <span class="nav-text">
                             O+ Donors
                         </span>
@@ -91,7 +92,7 @@
 
         <li class="has-subnav">
             <a href="/on">
-                <i class="fa fa-laptop fa-2x"></i>
+                <i class="fa fa-id-card-o fa-2x"></i>
                 <span class="nav-text">
                             O- Donors
                         </span>
@@ -101,7 +102,7 @@
 
         <li class="has-subnav">
             <a href="#">
-                <i class="fa fa-list fa-2x"></i>
+                <i class="fa fa-id-card-o fa-2x"></i>
                 <span class="nav-text">
                             List of Hospital
                         </span>
@@ -118,43 +119,29 @@
         </li>
     </ul>
 </nav>
-<div>
-    <div class="container">
 
-        <div class="table">
-            <div class="table-header">
-                <div class="header__item"><a id="name" class="filter__link" href="#">Name</a></div>
-                <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Type of blood</a></div>
-                <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">test1</a></div>
-                <div class="header__item"><a id="losses" class="filter__link filter__link--number" href="#">test2</a></div>
-                <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">test3</a></div>
-            </div>
-            <div class="table-content">
-                <div class="table-row">
-                    <div class="table-data">mosa</div>
-                    <div class="table-data">2</div>
-                    <div class="table-data">0</div>
-                    <div class="table-data">1</div>
-                    <div class="table-data">5</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-data">abo baker</div>
-                    <div class="table-data">1</div>
-                    <div class="table-data">1</div>
-                    <div class="table-data">2</div>
-                    <div class="table-data">3</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-data">balqees</div>
-                    <div class="table-data">0</div>
-                    <div class="table-data">2</div>
-                    <div class="table-data">2</div>
-                    <div class="table-data">2</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container">
+
+    <table >
+        <tr class="tableheader">
+            <td >Name</td>
+            <td>Blood Tybe</td>
+            <td>Phone</td>
+        </tr>
+        <tr>
+            <td>abo baker</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>balqees</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+    </table>
 </div>
+
+
 
 <script type="text/javascript" th:src="@{/js/login.js}"></script>
 </body>
