@@ -3,19 +3,26 @@ package com.dammak.project401.controller;
 import com.dammak.project401.HospitalRepo;
 import com.dammak.project401.NumberRepo;
 import com.dammak.project401.UserRepo;
+import com.dammak.project401.CommentRepo;
 import com.dammak.project401.models.AppUser;
+import com.dammak.project401.models.Comment;
 import com.dammak.project401.models.Hospital;
 import com.dammak.project401.models.NumberDonate;
-import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
+
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class UserController {
@@ -28,7 +35,8 @@ public class UserController {
     @Autowired
     NumberRepo numberRepo;
 
-
+    @Autowired
+    CommentRepo commentRepo;
 
     @GetMapping("/login")
     public String getLoginPage(){return "login";
@@ -49,22 +57,21 @@ public class UserController {
     public RedirectView signUpUser(@RequestParam String username, @RequestParam String password, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String dateOfBirth, @RequestParam String blodType
             , @RequestParam String placeName , @RequestParam String emailAdress , @RequestParam String phoneNum ){
 
-
         AppUser appUser = new AppUser(username, encoder.encode(password),firstName,lastName,dateOfBirth,blodType,placeName,emailAdress,phoneNum,"ROLE_USER","yes",0);
         userRepo.save(appUser);
         NumberDonate numberDonate = numberRepo.findByUsername("global");
         numberDonate.setNumberOfUser(numberDonate.getNumberOfUser()+1);
         numberRepo.save(numberDonate);
         return new RedirectView("/login");
-
     }
+
     @GetMapping("/")
     public String homePage (Model m){
-//        NumberDonate numberDonate = numberRepo.findByUsername("global");
-//
-//
-//        m.addAttribute("number", numberDonate.getNumberOfDonate());
-//        m.addAttribute("numberofuser",numberDonate.getNumberOfUser());
+        NumberDonate numberDonate = numberRepo.findByUsername("global");
+
+
+        m.addAttribute("number", numberDonate.getNumberOfDonate());
+        m.addAttribute("numberofuser",numberDonate.getNumberOfUser());
         return  "home";
     }
 //    @GetMapping("/about")
@@ -125,6 +132,8 @@ public class UserController {
         return "allhospital";
 
     }
+
+
     @GetMapping("/neaarhospital")
     public String getNearHospital(Principal p,Model m){
 
@@ -290,5 +299,11 @@ public class UserController {
     return new RedirectView("/getDonors/all");
 }
 
+    @PostMapping("/comment")
+    public RedirectView addComment(@RequestParam String username,  @RequestParam String emailAdress, @RequestParam String comment){
+        Comment comment1 = new Comment(username,emailAdress,comment);
+        commentRepo.save(comment1);
+        return new RedirectView("/about");
+    }
 
 }

@@ -230,17 +230,20 @@
             <div class="contact-img">
                 <img src="https://i.postimg.cc/mkNH0Cnm/cont.jpg" alt="" />
             </div>
+            <form ta:action="/comment" method="post">
             <div class="form-container">
                 <h2>Contact Us</h2>
-                <input type="text" placeholder="Your Name" />
-                <input type="email" placeholder="E-Mail" />
+                <input type="text" name="username" placeholder="Your Name" />
+                <input type="email" name="emailAdress" placeholder="E-Mail" />
                 <textarea
                         cols="30"
                         rows="6"
+                        name="comment"
                         placeholder="Type Your Message"
                 ></textarea>
-                <a href="#" class="btn btn-primary">Submit</a>
+                <a type="submit" class="btn btn-primary">Submit</a>
             </div>
+            </form>
         </div>
     </section>
 </div>
