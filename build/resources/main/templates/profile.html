@@ -1,23 +1,126 @@
+<!--<!DOCTYPE html>-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Sign In Paga</title>-->
+
+<!--    &lt;!&ndash;    <link th:href="@{navBar.css}" rel="stylesheet" />&ndash;&gt;-->
+<!--    &lt;!&ndash;    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">&ndash;&gt;-->
+<!--    &lt;!&ndash;    <link th:href="@{login.css}" rel="stylesheet" />&ndash;&gt;-->
+
+<!--</head>-->
+<!--<body>-->
+
+
+<!--<div class="table-row" th:each="doner:${userInformatiom}">-->
+<!--    <h1 th:text="${doner.username}"></h1>-->
+<!--    <h1 th:text="${doner.blodType}"></h1>-->
+<!--    <h1 th:text="${doner.phoneNum}"></h1>-->
+<!--    <h1 th:text="${doner.emailAdress}"></h1>-->
+<!--    <h1 th:text="${doner.dateOfBirth}"></h1>-->
+
+
+<!--    <th:block th:switch="${doner.getStatus()}">-->
+<!--        <th:block th:case="'yes'">-->
+<!--            <a > you can</a>-->
+<!--        </th:block>-->
+<!--        <th:block th:case="'no'">-->
+<!--            <p  >you cant <span th:text="${doner.getDonatDate()}"></span></p>-->
+<!--        </th:block>-->
+
+<!--        <h1 th:text ="${doner.numberOfDonat}"></h1>-->
+
+
+
+<!--        &lt;!&ndash;<div th:replace="navBar :: nav"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<h2>Sign in Page</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="container" id="container">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="form-container sign-up-container">&ndash;&gt;-->
+<!--&lt;!&ndash;<h1>hellllll0000000</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;<form action="/signup" method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;    <h1>Sign Up</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="username" id="username" placeholder="username" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="password" id="password" placeholder="password" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="firstName" id="firstName" placeholder="firstName" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="lastName" id="lastName" placeholder="lastName" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="dateOfBirth" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="blodType" id="blodType" placeholder="blodType" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="placeName" id="placeName" placeholder="placeName" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="emailAdress" id="emailAdress" placeholder="emailAdress" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="phoneNum" id="phoneNum" placeholder="phoneNum" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="submit" >&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            <a href="#">If you have an account? click here</a>&ndash;&gt;-->
+<!--    &lt;!&ndash;            <button>Sign Up</button>&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="form-container sign-in-container">&ndash;&gt;-->
+<!--&lt;!&ndash;        <form action="#">&ndash;&gt;-->
+<!--&lt;!&ndash;            <h1>Sign in as Donor Account</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="email" placeholder="Email" />&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="password" placeholder="Password" />&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="#">To create a new account? click here</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button>Sign In</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </form>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="overlay-container">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="overlay">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="overlay-panel overlay-left">&ndash;&gt;-->
+<!--&lt;!&ndash;                <h1>Donor Account</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p>To login as a Donor Account, please click here</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                <button class="ghost" id="signIn">Sign In</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="overlay-panel overlay-right">&ndash;&gt;-->
+<!--&lt;!&ndash;                <h1>Hospitals Account</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p>To login as a Hospitals Account, please click here</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                <button class="ghost" id="signUp">Sign In</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<script type="text/javascript" th:src="@{/js/login.js}"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>&ndash;&gt;-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sign In Paga</title>
-
-    <!--    <link th:href="@{navBar.css}" rel="stylesheet" />-->
-    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-    <!--    <link th:href="@{login.css}" rel="stylesheet" />-->
-
+    <title>Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link th:href="userProfile.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="navBar.css" />
+    <link rel="stylesheet" href="signup.css" />
+    <link rel="stylesheet" href="footer.css" />
 </head>
 <body>
 
-
-<div class="table-row" th:each="doner:${userInformatiom}">
+<div th:replace="navBar :: nav"></div>
+<!--        <div class="table-row" th:each="doner:${userInformatiom}">
     <h1 th:text="${doner.username}"></h1>
     <h1 th:text="${doner.blodType}"></h1>
     <h1 th:text="${doner.phoneNum}"></h1>
     <h1 th:text="${doner.emailAdress}"></h1>
     <h1 th:text="${doner.dateOfBirth}"></h1>
+
 
     <th:block th:switch="${doner.getStatus()}">
         <th:block th:case="'yes'">
@@ -27,66 +130,122 @@
             <p  >you cant <span th:text="${doner.getDonatDate()}"></span></p>
         </th:block>
 
-        <h1 th:text ="${doner.numberOfDonat}"></h1>
+        <h1 th:text ="${doner.numberOfDonat}"></h1> -->
+
+<div id="user-profile-2" class="user-profile">
+    <div class="tabbable">
+
+
+        <div class="tab-content no-border padding-24">
+            <div id="home" class="tab-pane in active">
+                <div class="row"  th:each="doner:${userInformatiom}">
+                    <div class="col-xs-12 col-sm-3 center">
+                     <span class="profile-picture">
+                        <img class="editable img-responsive" alt=" Avatar" id="avatar2" src="http://bootdey.com/img/Content/avatar/avatar6.png">
+                     </span>
+
+                        <div class="space space-4"></div>
+
+
+                    </div><!-- /.col -->
+
+                    <div class="col-xs-12 col-sm-9">
+                        <h4 class="blue">
+                            <span class="middle" th:text="${doner.username}"></span>
+
+
+                        </h4>
+
+                        <div class="profile-user-info">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name" > Name  </div>
+
+                                <div class="profile-info-value">
+                                    <span th:text="${doner.firstName}"></span><p> </p><span th:text="${doner.lastName}"></span>
+                                </div>
+                            </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Blood Type </div>
+
+                                <div class="profile-info-value">
+                                    <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                    <span th:text="${doner.blodType}"></span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Location </div>
+
+                                <div class="profile-info-value">
+                                    <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                    <span>jordan</span>
+                                    <span th:text="${doner.placeName}"></span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Date Of Barth </div>
+
+                                <div class="profile-info-value">
+                                    <span th:text="${doner.dateOfBirth}"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Phone </div>
+
+                                <div class="profile-info-value">
+                                    <span th:text="${doner.phoneNum}"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hr hr-8 dotted"></div>
+
+                        <div class="profile-user-info">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Email </div>
+
+                                <div class="profile-info-value">
+                                    <a href="#" target="_blank" th:text="${doner.emailAdress}"></a>
+                                </div>
+                            </div>
+
+                                    <th:block th:switch="${doner.getStatus()}">
+                                    <th:block th:case="'yes'">
+                                    <div class="profile-info-name"><p>You Allow To Donat</p> <span  th:text="${doner.getDonatDate()}"></span>></span> </div>
+                                </th:block>
+                                    <th:block th:case="'no'">
+                                        <div class="profile-info-name"><p>You Not Allow To Donat</p> <span  th:text="${doner.getDonatDate()}"></span>></span> </div>
+                                    </th:block>
+
+                                </div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Number Donat </div>
+
+                                        <div class="profile-info-value">
+                                            <span th:text="${doner.numberOfDonat}"></span>
+                                        </div>
+                                    </div>
 
 
 
-        <!--<div th:replace="navBar :: nav"></div>-->
-<!--<br>-->
-<!--<h2>Sign in Page</h2>-->
-<!--<div class="container" id="container">-->
-<!--    <div class="form-container sign-up-container">-->
-<!--<h1>hellllll0000000</h1>-->
-<!--<form action="/signup" method="post">-->
-<!--    <h1>Sign Up</h1>-->
-<!--    <input type="text" name="username" id="username" placeholder="username" />-->
-<!--    <input type="text" name="password" id="password" placeholder="password" />-->
-<!--    <input type="text" name="firstName" id="firstName" placeholder="firstName" />-->
-<!--    <input type="text" name="lastName" id="lastName" placeholder="lastName" />-->
-<!--    <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="dateOfBirth" />-->
-<!--    <input type="text" name="blodType" id="blodType" placeholder="blodType" />-->
-<!--    <input type="text" name="placeName" id="placeName" placeholder="placeName" />-->
-<!--    <input type="text" name="emailAdress" id="emailAdress" placeholder="emailAdress" />-->
-<!--    <input type="text" name="phoneNum" id="phoneNum" placeholder="phoneNum" />-->
-<!--    <input type="submit" >-->
 
-    <!--            <a href="#">If you have an account? click here</a>-->
-    <!--            <button>Sign Up</button>-->
-<!--</form>-->
-<!--    </div>-->
-<!--    <div class="form-container sign-in-container">-->
-<!--        <form action="#">-->
-<!--            <h1>Sign in as Donor Account</h1>-->
-<!--            <input type="email" placeholder="Email" />-->
-<!--            <input type="password" placeholder="Password" />-->
-<!--            <a href="#">To create a new account? click here</a>-->
-<!--            <button>Sign In</button>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--    <div class="overlay-container">-->
-<!--        <div class="overlay">-->
-<!--            <div class="overlay-panel overlay-left">-->
-<!--                <h1>Donor Account</h1>-->
-<!--                <p>To login as a Donor Account, please click here</p>-->
-<!--                <button class="ghost" id="signIn">Sign In</button>-->
-<!--            </div>-->
-<!--            <div class="overlay-panel overlay-right">-->
-<!--                <h1>Hospitals Account</h1>-->
-<!--                <p>To login as a Hospitals Account, please click here</p>-->
-<!--                <button class="ghost" id="signUp">Sign In</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
-<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
 
-<!--<script type="text/javascript" th:src="@{/js/login.js}"></script>-->
-<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+                    <div class="space-20"></div>
 
+
+                </div><!-- /#home -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="footer :: footer"></div>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </body>
 </html>

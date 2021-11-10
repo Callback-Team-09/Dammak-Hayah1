@@ -1,194 +1,153 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>$Title$</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link th:href="hospital.css" rel="stylesheet"/>
 
 </head>
 <body>
-<!--<div class="area"></div><nav class="main-menu">-->
-<!--    <ul>-->
-<!--        <li>-->
-<!--            <a href="/hospital">-->
-<!--                <i class="fa fa-home fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            Home-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--        </li>-->
-<!--        <li class="has-subnav">-->
-<!--            <a href="/all">-->
-<!--                <i class="fa fa-laptop fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            All Donors-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--        </li>-->
 
-<!--        <li class="has-subnav">-->
-<!--            <a href="/ap">-->
-<!--                <i class="fa fa-laptop fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            A+ Donors-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--        </li>-->
+<div class="area"></div><nav class="main-menu">
+    <ul>
 
-<!--        <li class="has-subnav">-->
-<!--            <a href="/an">-->
-<!--                <i class="fa fa-laptop fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            A- Donors-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <li class="has-subnav">
+            <a href="/getDonors/all">
+                <i class="fa fa-id-card-o fa-2x"></i>
+                <span class="nav-text">
+                            All Donors
+                        </span>
+            </a>
+        </li>
 
-<!--        <li class="has-subnav">-->
-<!--            <a href="/bp">-->
-<!--                <i class="fa fa-laptop fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            B+ Donors-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <li class="has-subnav">
+            <a href="/getDonors/A+">
+                <i class="fa fa-id-card-o fa-2x"></i>
+                <span class="nav-text">
+                            A+ Donors
+                        </span>
+            </a>
+        </li>
 
-<!--        <li class="has-subnav">-->
-<!--            <a href="/bn">-->
-<!--                <i class="fa fa-laptop fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            B- Donors-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <li class="has-subnav">
+            <a href="/getDonors/A-">
+                <i class="fa fa-id-card-o fa-2x"></i>
+                <span class="nav-text">
+                            A- Donors
+                        </span>
+            </a>
+        </li>
 
-<!--        <li class="has-subnav">-->
-<!--            <a href="/abp">-->
-<!--                <i class="fa fa-laptop fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            AB+ Donors-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <li class="has-subnav">
+            <a href="/getDonors/B+">
+                <i class="fa fa-id-card-o fa-2x"></i>
+                <span class="nav-text">
+                            B+ Donors
+                        </span>
+            </a>
+        </li>
 
-<!--        <li class="has-subnav">-->
-<!--            <a href="/abn">-->
-<!--                <i class="fa fa-laptop fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            AB- Donors-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <li class="has-subnav">
+            <a href="/getDonors/B-">
+                <i class="fa fa-id-card-o fa-2x"></i>
+                <span class="nav-text">
+                            B- Donors
+                        </span>
+            </a>
+        </li>
 
-<!--        <li class="has-subnav">-->
-<!--            <a href="/op">-->
-<!--                <i class="fa fa-laptop fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            O+ Donors-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <li class="has-subnav">
+            <a href="/getDonors/AB+">
+                <i class="fa fa-id-card-o fa-2x"></i>
+                <span class="nav-text">
+                            AB+ Donors
+                        </span>
+            </a>
+        </li>
 
-<!--        <li class="has-subnav">-->
-<!--            <a href="/on">-->
-<!--                <i class="fa fa-laptop fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            O- Donors-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <li class="has-subnav">
+            <a href="/getDonors/AB-">
+                <i class="fa fa-id-card-o fa-2x"></i>
+                <span class="nav-text">
+                            AB- Donors
+                        </span>
+            </a>
+        </li>
+
+        <li class="has-subnav">
+            <a href="/getDonors/O+">
+                <i class="fa fa-id-card-o fa-2x"></i>
+                <span class="nav-text">
+                            O+ Donors
+                        </span>
+            </a>
+        </li>
+
+        <li class="has-subnav">
+            <a href="/getDonors/O-">
+                <i class="fa fa-id-card-o fa-2x"></i>
+                <span class="nav-text">
+                            O- Donors
+                        </span>
+            </a>
+        </li>
 
 
-<!--        <li class="has-subnav">-->
-<!--            <a href="#">-->
-<!--                <i class="fa fa-list fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            List of Hospital-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--    </ul>-->
-<!--    <ul class="logout">-->
-<!--        <li>-->
-<!--            <a href="#">-->
-<!--                <i class="fa fa-power-off fa-2x"></i>-->
-<!--                <span class="nav-text">-->
-<!--                            Logout-->
-<!--                        </span>-->
-<!--            </a>-->
-<!--        </li>-->
-<!--    </ul>-->
-<!--</nav>-->
-<!--<div>-->
-    <div class="container">
-<!--<a th:href="@{'/getDonors/all'"> all</a>-->
-<a href="/getDonors/all">all</a>
-<a href="/getDonors/o+">o+</a>
-<a href="/getDonors/o-">o-</a>
-<a href="/getDonors/a+">a+</a>
-<a href="/getDonors/a-">a-</a>
-<a href="/getDonors/ab+">ab+</a>
-<a href="/getDonors/ab-">ab-</a>
 
+    </ul>
+    <ul class="logout">
+        <li>
+            <a href="/perform_logout">
+                <i class="fa fa-power-off fa-2x"></i>
+                <span class="nav-text">
+                            Logout
+                        </span>
+            </a>
+        </li>
+    </ul>
+</nav>
 <h1 > number of donat: <span th:text="${number}"></span></h1>
-<h1 >Type: <span th:text="${word}"></span></h1>
-        <th:block th:switch="${on}">
-            <th:block th:case="'0'">
-                <h1>empty</h1>
-            </th:block>
-            <th:block th:case="'1'">
-        <div class="table">
-            <div class="table-header">
-                <div class="header__item"><a id="name" class="filter__link" href="#">Name</a></div>
-                <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Type of blood</a></div>
-                <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">phone number</a></div>
-                <div class="header__item"><a id="losses" class="filter__link filter__link--number" href="#">email</a></div>
-                <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">bearth day</a></div>
-            </div>
-<!--            <div class="table-content" >-->
+<div class="container">
 
-                <div class="table-row" th:each="doner:${doners}">
-                    <h1 th:text="${doner.username}"></h1>
-                    <h1 th:text="${doner.blodType}"></h1>
-                    <h1 th:text="${doner.phoneNum}"></h1>
-                    <h1 th:text="${doner.emailAdress}"></h1>
-                    <h1 th:text="${doner.dateOfBirth}"></h1>
-                    <th:block th:switch="${doner.getStatus()}">
-                        <th:block th:case="'yes'">
-                            <a th:href="@{'/confermDonate/'+${doner.id}}">confarm</a>
-                        </th:block>
-                        <th:block th:case="'no'">
-                            <p th:text="${doner.getDonatDate()}" ></p>
-                        </th:block>
-<!--                    </th:block>-->
+    <h1 >Type: <span th:text="${word}"></span></h1>
+    <th:block th:switch="${on}">
+        <th:block th:case="'0'">
+            <h1>empty</h1>
+        </th:block>
+        <th:block th:case="'1'">
+    <table >
+        <tr class="tableheader">
+            <td >Name</td>
+            <td>Blood Tybe</td>
+            <td>Phone</td>
+        </tr>
+        <tr th:each="doner:${doners}">
+            <td  th:text="${doner.username}"></td>
+            <td th:text="${doner.blodType}"></td>
+            <td th:text="${doner.phoneNum}"></td>
+            <td th:text="${doner.emailAdress}"></td>
+            <td th:text="${doner.dateOfBirth}"></td>
+            <td th:text="${doner.phoneNum}"></td>
+            <th:block th:switch="${doner.getStatus()}">
+                <th:block th:case="'yes'">
+            <td ><a th:href="@{'/confermDonate/'+${doner.id}}">confarm</a></td>
+                </th:block>
+                <th:block th:case="'no'">
+                    <td > <p th:text="${doner.getDonatDate()}" ></p></td>
 
+                </th:block>
 
 
+        </tr>
 
 
+    </table>
 </div>
 
 
-        </div>
-<!--            </th:block>-->
-<!--            </th:block>-->
-</div>
-<!--                    <h1></h1>-->
 
-<!--                    <div class="table-data" ></div>-->
-<!--                    <div class="table-data" ></div>-->
-<!--                    <div class="table-data" ></div>-->
-<!--                    <div class="table-data" ></div>-->
-
-
-
-<!--        </div>-->
-
-
-<!--    </div>-->
-
-<!--</div>-->
-<!--            </th:block>-->
-
-<!--<script type="text/javascript" th:src="@{/js/login.js}"></script>-->
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
 </body>
 </html>

@@ -2,61 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Sign In Paga</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Sign Up Paga</title>
+  <link th:href="@{navBar.css}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="navBar.css" />
 
-<!--  <link th:href="@{navBar.css}" rel="stylesheet" />-->
-<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-<!--  <link th:href="@{login.css}" rel="stylesheet" />-->
+  <link rel="stylesheet" href="login.css" />
+
+  <link rel="stylesheet" href="footer.css" />
+
 
 </head>
 <body>
 
-<!--<div th:replace="navBar :: nav"></div>-->
-<br>
-<h2>Sign in Page</h2>
-<div class="container" id="container">
-  <div class="form-container sign-up-container">
-    <form action="/perform_login" method="post">
-      <h1>Sign in as Hospitals Account </h1>
-      <input type="text" name="username" id="username" placeholder="Name" />
-      <input type="text" name="password"  id="password" placeholder="Email" />
-      <input type="submit">
+<div th:replace="navBar :: nav"></div>
 
-    </form>
-  </div>
-  <div class="form-container sign-in-container">
-    <form action="/perform_login" method="post">
-      <h1>Sign in as Hospitals Account </h1>
-      <input type="text" name="username" id="username" placeholder="Name" />
-      <input type="text" name="password"  id="password" placeholder="Email" />
-      <input type="submit">
-
-    </form>
-  </div>
-  <div class="overlay-container">
-    <div class="overlay">
-      <div class="overlay-panel overlay-left">
-        <h1>Donor Account</h1>
-        <p>To login as a Donor Account, please click here</p>
-        <button class="ghost" id="signIn">Sign In</button>
-      </div>
-      <div class="overlay-panel overlay-right">
-        <h1>Hospitals Account</h1>
-        <p>To login as a Hospitals Account, please click here</p>
-        <button class="ghost" id="signUp">Sign In</button>
-      </div>
-    </div>
-  </div>
+<div class="login">
+  <form action="/perform_login" method="post">
+  <input type="text" placeholder="Username" id="username" name="username">
+  <input type="password" placeholder="password" id="password" name="password">
+  <a href="/signup" class="forgot">you dont have an account? click here</a>
+  <input type="submit" value="Sign In">
+  </form>
 </div>
+<div class="shadow"></div>
 
-<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
 
-<!--<script type="text/javascript" th:src="@{/js/login.js}"></script>-->
-<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+
+<div th:replace="footer :: footer"></div>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
 
 </body>
 </html>

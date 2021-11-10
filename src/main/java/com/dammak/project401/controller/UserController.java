@@ -67,28 +67,28 @@ public class UserController {
         m.addAttribute("numberofuser",numberDonate.getNumberOfUser());
         return  "home";
     }
+//    @GetMapping("/about")
+//    public String about
     @GetMapping("/myprofile")
-    public String profile(Principal p){
+    public RedirectView profile(Principal p, Model m){
 
-       AppUser appUser = userRepo.findByUsername(p.getName());
-        String auth = appUser.getAuthority();
+       AppUser doner = userRepo.findByUsername(p.getName());
+        String auth = doner.getAuthority();
+        if(auth.equals("admin")){
+//            Hospital hospital = hospitalRepo.findByUsername(p.getName());
+//            m.addAttribute("hospitalname",p.getName());
+            return  new RedirectView("/getDonors/all");
+        }
 
-        System.out.println("ssssssssssssssssssssssssss"+appUser.getAuthority().toLowerCase(Locale.ROOT));
-
-       return "/"+auth;
+       return new RedirectView("/profile");
     }
-    @GetMapping("/admin")
-    public String hospitalProfil(Principal p, Model m){
-        Hospital hospital = hospitalRepo.findByUsername(p.getName());
-        m.addAttribute("hospitalname",p.getName());
-        return "donerss";
-    }
-@GetMapping("/ROLE_USER")
-public String userProfile(Principal p , Model m){
-        AppUser appUser = userRepo.findByUsername(p.getName());
-        m.addAttribute("userInformatiom",appUser);
+    @GetMapping("/profile")
+    public String userProfil(Principal p, Model m){
+        AppUser doner = userRepo.findByUsername(p.getName());
+        m.addAttribute("userInformatiom",doner);
         return "profile";
-}
+    }
+
     @GetMapping("/user/{id}")
     public String getUser(Principal p, Model model, @PathVariable Long id) {
         model.addAttribute("usernamePrincipal", p.getName());
@@ -96,8 +96,33 @@ public String userProfile(Principal p , Model m){
         model.addAttribute("userInformation", appUser);
         return "users.html";
     }
+    @GetMapping("/allhospital")
+    public String getAllHospital(Principal p,Model m){
+        AppUser appUser= userRepo.findByUsername(p.getName());
+        List<Hospital> nearHospital = (List<Hospital>) hospitalRepo.findAll();
+        if (appUser.getHospitals().isEmpty()){
+            m.addAttribute("isHaveHospital",false);
+            m.addAttribute("allhospitals",nearHospital);
+            return "allhospital";
+
+        }
+        Set<Hospital> removeHospital = appUser.getHospitals();
+        for (Hospital hospital : removeHospital){
+            if (nearHospital.contains(hospital)){
+                nearHospital.remove(hospital);
+            }
+        }
+//        m.addAttribute("isHaveHospital",true);
+        m.addAttribute("hospitalHave",appUser.getHospitals());
+        m.addAttribute("allhospitals",nearHospital);
+        m.addAttribute("user",appUser);
+
+        return "allhospital";
+
+    }
     @GetMapping("/neaarhospital")
     public String getNearHospital(Principal p,Model m){
+
         AppUser appUser= userRepo.findByUsername(p.getName());
         List<Hospital> nearHospital = hospitalRepo.findAllByPlaceName(appUser.getPlaceName());
         if (appUser.getHospitals().isEmpty()){
@@ -167,55 +192,55 @@ public String userProfile(Principal p , Model m){
 
             return "donerss";
 
-        }else if (type.equals("o+")){
+        }else if (type.equals("O+")){
             for (AppUser doners : hospital.getDonors()){
-                if(doners.getBlodType().equals("o+")){
+                if(doners.getBlodType().equals("O+")){
                     doonersList.add(doners);
                 }
 
             }
 
-        }else if (type.equals("o-")){
+        }else if (type.equals("O-")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType().equals("o-")) {
+                if (doners.getBlodType().equals("O-")) {
                     doonersList.add(doners);
                 }
 
             }
             }
-            else if (type.equals("a+")){
+            else if (type.equals("A+")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType().equals("a+")) {
+                if (doners.getBlodType().equals("A+")) {
                     doonersList.add(doners);
                 }
 
-            }}else if (type.equals("a-")){
+            }}else if (type.equals("A-")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType().equals("a-")) {
+                if (doners.getBlodType().equals("A-")) {
                     doonersList.add(doners);
                 }
 
-            }}else if (type.equals("b+")){
+            }}else if (type.equals("B+")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType().equals("b+")) {
+                if (doners.getBlodType().equals("B+")) {
                     doonersList.add(doners);
                 }
 
-            }}else if (type.equals("b-")){
+            }}else if (type.equals("B-")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType().equals("b-")) {
+                if (doners.getBlodType().equals("B-")) {
                     doonersList.add(doners);
                 }
 
-            }}else if (type.equals("ab+")){
+            }}else if (type.equals("AB+")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType().equals("ab+")) {
+                if (doners.getBlodType().equals("AB+")) {
                     doonersList.add(doners);
                 }
 
-            }}else if (type.equals("ab-")){
+            }}else if (type.equals("AB-")){
             for (AppUser doners : hospital.getDonors()) {
-                if (doners.getBlodType().equals("ab-")) {
+                if (doners.getBlodType().equals("AB-")) {
                     doonersList.add(doners);
                 }
 
