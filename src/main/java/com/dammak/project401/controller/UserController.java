@@ -60,11 +60,11 @@ public class UserController {
     }
     @GetMapping("/")
     public String homePage (Model m){
-//        NumberDonate numberDonate = numberRepo.findByUsername("global");
-//
-//
-//        m.addAttribute("number", numberDonate.getNumberOfDonate());
-//        m.addAttribute("numberofuser",numberDonate.getNumberOfUser());
+        NumberDonate numberDonate = numberRepo.findByUsername("global");
+
+
+        m.addAttribute("number", numberDonate.getNumberOfDonate());
+        m.addAttribute("numberofuser",numberDonate.getNumberOfUser());
         return  "home";
     }
 //    @GetMapping("/about")
@@ -117,7 +117,7 @@ public class UserController {
                 nearHospital.remove(hospital);
             }
         }
-//        m.addAttribute("isHaveHospital",true);
+        m.addAttribute("isHaveHospital",true);
         m.addAttribute("hospitalHave",appUser.getHospitals());
         m.addAttribute("allhospitals",nearHospital);
         m.addAttribute("user",appUser);
@@ -142,7 +142,7 @@ public class UserController {
                 nearHospital.remove(hospital);
             }
         }
-//        m.addAttribute("isHaveHospital",true);
+        m.addAttribute("isHaveHospital",true);
         m.addAttribute("hospitalHave",appUser.getHospitals());
         m.addAttribute("neaarhospitals",nearHospital);
         m.addAttribute("user",appUser);
@@ -150,8 +150,8 @@ public class UserController {
         return "neaarhospital";
 
     }
-    @GetMapping("/addhospital/{hospitalId}")
-    public RedirectView addHospital(@PathVariable Long hospitalId, Principal p,Model m){
+    @GetMapping("/addhospital/{direct}/{hospitalId}")
+    public RedirectView addHospital(@PathVariable String direct, @PathVariable Long hospitalId, Principal p,Model m){
         Hospital hospital = hospitalRepo.findById(hospitalId).get();
         AppUser appUser = userRepo.findByUsername(p.getName());
         if (hospital.getDonors().contains(appUser)){
@@ -161,6 +161,9 @@ public class UserController {
             hospital.getDonors().add(appUser);
         }
         hospitalRepo.save(hospital);
+if(direct.equals("all")){
+    return new RedirectView("/allhospital");
+}
         return new RedirectView("/neaarhospital");
     }
     @GetMapping("/getDonors/{type}")
@@ -193,7 +196,7 @@ public class UserController {
             m.addAttribute("number",hospital.getNumnerOfDonat());
 
 
-
+            m.addAttribute("name",hospital.getUsername());
 
             return "donerss";
 
@@ -255,6 +258,7 @@ public class UserController {
         m.addAttribute("doners",doonersList);
         m.addAttribute("on",1);
         m.addAttribute("number",hospital.getNumnerOfDonat());
+        m.addAttribute("name",hospital.getUsername());
 //
 
         return  "donerss";

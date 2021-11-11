@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -21,22 +18,31 @@
     <link rel="stylesheet" href="footer.css" />
 </head>
 <body>
-
 <div th:replace="navBar :: nav"></div>
-
 <section class="showcase-area" id="showcase">
+    <div id="counterr">
+        <div class="activity">
+            <img src="http://code.quirkbot.com/assets/images/logo/white-outline.svg" width="30%" alt="">
+            <h1 class="counter"><span class="hits" th:text="${number}"></span>
+                <h1>Number of donors</h1>
+        </div><div class="activity">
+        <img src="http://code.quirkbot.com/assets/images/logo/white-outline.svg" width="30%" alt="">
+        <h1 class="counter"><span class="hits" th:text="${numberofuser}"></span>
+            <h1>Number of user</h1>
+    </div>
+    </div>
+
     <div class="showcase-container">
         <div class="anim">
             <h1 class="main-title" id="home">Donate, <span class="mainSpan">save a life</span></h1>
         </div>
         <p>Your little effort can give others a second chance to live life</p>
         <div class="bttn">
-            <a href="/signup" class="btn btn-primary">Signup</a>
-            <a href="/login" class="btn btn-primary">Login</a>
+            <a sec:authorize="!isAuthenticated()" href="/signup" class="btn btn-primary">Signup</a>
+            <a sec:authorize="!isAuthenticated()" href="/login" class="btn btn-primary">Login</a>
         </div>
     </div>
 </section>
-
 <section id="about">
     <div class="about-wrapper container">
         <div class="about-text">
@@ -46,8 +52,7 @@
                 your initiative to donate once can create a million smiles.
                 Don't let mosquitoes get your blood first !
             </p>
-<!--            <h1> number of donators<span th:text="${number}"></span></h1>-->
-<!--            <h1> number of user<span th:text="${numberofuser}"></span></h1>-->
+
         </div>
         <div class="about-img">
             <img src="https://www.liveyourlifept.com/blog/wp-content/uploads/2017/01/Give-blood-save-life.jpg" alt="food" />
@@ -112,12 +117,9 @@
                 <h2 class="food-titile">You must be in good health.</h2>
             </div>
         </div>
-
         <div class="food-menu-item">
             <div class="food-img">
-
                 <img src="data:image/jpeg;base64,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" alt="" />
-
             </div>
             <div class="food-description">
                 <h2 class="food-titile">Be at least 16 or 17 years old</h2>
@@ -136,19 +138,13 @@
             </div>
             <div class="food-description">
                 <h2 class="food-titile">Be able to pass physical and health history assessments</h2>
-
             </div>
-
         </div>
     </div>
 </section>
-
 <div th:replace="footer :: footer"></div>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 </body>
 </html>
-
-

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
@@ -12,60 +12,108 @@
 </head>
 <body>
 
+
+
 <div th:replace="navBar :: nav"></div>
 
-<h2>Nearby  Hospital</h2>
-
-<div class="cont">
-
-    <div class="container mt-5">
-        <div class="row d-flex justify-content-center">
-            <div>
-                <div class="card p-3 py-4">
-                    <div class="text-center"> <img src="https://healthpayerintelligence.com/images/site/article_headers/_normal/2017-01-12-hospital.gif" width="100" class="rounded-circle"> </div>
-                    <div class="text-center mt-3"  th:each="neaarhospital:${neaarhospitals}">
-                        <h5 class="mt-2 mb-0"  th:text="${neaarhospital.username}"></h5> Place <span th:text="${neaarhospital.placeName}"></span>
-
-
-
-                        <div class="buttons"> <button class="btn btn-outline-primary px-4"> <a th:href="@{'/addhospital/'+${neaarhospital.id}}"> Add</a></button> </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 
 
 
-</div>
 
-<h2>The Hospital That You Followed</h2>
-
-<div class="cont">
-
-
-
-    <div class="container mt-5">
-        <div class="row d-flex justify-content-center">
-            <div>
-                <div class="card p-3 py-4">
-                    <div class="text-center"> <img src="https://healthpayerintelligence.com/images/site/article_headers/_normal/2017-01-12-hospital.gif" width="100" class="rounded-circle"> </div>
-                    <div class="text-center mt-3" th:each="neaarhospital:${hospitalHave}">
-                        <h5 class="mt-2 mb-0"  th:text="${neaarhospital.username}"> </h5> Place<span  th:text="${neaarhospital.placeName}">></span>
-
-                        <div class="buttons"> <button class="btn btn-outline-primary px-4"><a th:href="@{'/addhospital/'+${neaarhospital.id}}"> Remove</a>></button> </div>
+<div>
+    <h2>Nearby  Hospital</h2>
+    <div class="containercards">
+        <div class="container">
+            <div class="card" th:each="neaarhospital:${neaarhospitals}">
+                <div class="box" >
+                    <div class="content" >
+                        <h3  th:text="${neaarhospital.username}"></h3>
+                        <h3  th:text="${neaarhospital.placeName}"></h3>
+                        <button><a th:href="@{'/addhospital/no/'+${neaarhospital.id}}"> Add</a></button>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
+        </div>
+        <!--        <div class="container">-->
+        <!--            <div class="card">-->
+        <!--                <div class="box">-->
+        <!--                    <div class="content" th:each="neaarhospital:${neaarhospitals}">-->
+        <!--                        <h2>01</h2>-->
+        <!--                        <h3  th:each="neaarhospital:${neaarhospitals}">Card One</h3>-->
+        <!--                        <p  th:text="${neaarhospital.username}">Place <span th:text="${neaarhospital.placeName}"></span></p>-->
+        <!--                        <button><a th:href="@{'/addhospital/'+${neaarhospital.id}}"> Add</a></button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+
+        <!--        </div>-->
+        <!--            <div class="container">-->
+        <!--                <div class="card">-->
+        <!--                    <div class="box">-->
+        <!--                        <div class="content" th:each="neaarhospital:${neaarhospitals}">-->
+        <!--                            <h2>01</h2>-->
+        <!--                            <h3  th:each="neaarhospital:${neaarhospitals}">Card One</h3>-->
+        <!--                            <p  th:text="${neaarhospital.username}">Place <span th:text="${neaarhospital.placeName}"></span></p>-->
+        <!--                            <button><a th:href="@{'/addhospital/'+${neaarhospital.id}}"> Add</a></button>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+
+        <!--            </div>-->
+    </div>
 </div>
+
+<div>
+    <h2>Nearby  Hospital</h2>
+    <div class="containercards">
+        <div class="container">
+            <div class="card" th:each="neaarhospital:${hospitalHave}">
+                <div class="box" >
+                    <div class="content" >
+                        <h3  th:text="${neaarhospital.username}"></h3>
+                        <h3  th:text="${neaarhospital.placeName}"></h3>
+                        <button class="btn btn-outline-primary px-4"><a th:href="@{'/addhospital/no/'+${neaarhospital.id}}"> Remove</a>></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--    <div class="container">-->
+        <!--        <div class="card">-->
+        <!--            <div class="box">-->
+        <!--                <div class="content" th:each="neaarhospital:${neaarhospitals}">-->
+        <!--
+        <!--                    <h3  th:each="neaarhospital:${neaarhospitals}"></h3>-->
+        <!--                    <p  th:text="${neaarhospital.username}">Place <span th:text="${neaarhospital.placeName}"></span></p>-->
+        <!--                   <button class="btn btn-outline-primary px-4"><a th:href="@{'/addhospital/'+${neaarhospital.id}}"> Remove</a>></button>
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <!--    </div>-->
+        <!--        <div class="container">-->
+        <!--            <div class="card">-->
+        <!--                <div class="box">-->
+        <!--                    <div class="content" th:each="neaarhospital:${neaarhospitals}">-->
+        <!--                        <h2>01</h2>-->
+        <!--                        <h3  th:each="neaarhospital:${neaarhospitals}">Card One</h3>-->
+        <!--                        <p  th:text="${neaarhospital.username}">Place <span th:text="${neaarhospital.placeName}"></span></p>-->
+        <!--                       <button class="btn btn-outline-primary px-4"><a th:href="@{'/addhospital/'+${neaarhospital.id}}"> Remove</a>></button>
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+
+        <!--        </div>-->
+    </div>
+</div>
+
+
 
 <div th:replace="footer :: footer"></div>
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"/></script>
+<!--<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"/></script>-->
+
 </body>
 </html>

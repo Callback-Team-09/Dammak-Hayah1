@@ -1,27 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link th:href="hospital.css" rel="stylesheet"/>
 
+<html lang="en">
+<head>
+    <title>How to build dashboard with bootstrap</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="donerss.css" />
 </head>
 <body>
+<nav class="navbar navbar-dark bg-primary flex-md-nowapr fixed-top p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"><span th:text="${name}" > </span></a>
 
-<div class="area"></div><nav class="main-menu">
-    <ul>
-
-        <li class="has-subnav">
-            <a href="/getDonors/all">
-                <i class="fa fa-id-card-o fa-2x"></i>
-                <span class="nav-text">
-                            All Donors
-                        </span>
-            </a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowarp">
+            <a class="nav-link" href="/perform_logout">Logout</a>
         </li>
+    </ul>
 
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row">
         <li class="has-subnav">
             <a href="/getDonors/A+">
                 <i class="fa fa-id-card-o fa-2x"></i>
@@ -31,123 +34,135 @@
             </a>
         </li>
 
-        <li class="has-subnav">
-            <a href="/getDonors/A-">
-                <i class="fa fa-id-card-o fa-2x"></i>
-                <span class="nav-text">
+        <div class="col-md-2 bg-light d-md-block sidebar">
+            <div class="left-sidebar">
+                <ul class="nav flex-column sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/getDonors/all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16    16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+                            All Donors
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/getDonors/all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16    16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+                            All Donors
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/getDonors/A+">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16    16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+                            A+ Donors
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/getDonors/A-">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
                             A- Donors
-                        </span>
-            </a>
-        </li>
-
-        <li class="has-subnav">
-            <a href="/getDonors/B+">
-                <i class="fa fa-id-card-o fa-2x"></i>
-                <span class="nav-text">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/getDonors/B+">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
                             B+ Donors
-                        </span>
-            </a>
-        </li>
-
-        <li class="has-subnav">
-            <a href="/getDonors/B-">
-                <i class="fa fa-id-card-o fa-2x"></i>
-                <span class="nav-text">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/getDonors/B-">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
                             B- Donors
-                        </span>
-            </a>
-        </li>
-
-        <li class="has-subnav">
-            <a href="/getDonors/AB+">
-                <i class="fa fa-id-card-o fa-2x"></i>
-                <span class="nav-text">
-                            AB+ Donors
-                        </span>
-            </a>
-        </li>
-
-        <li class="has-subnav">
-            <a href="/getDonors/AB-">
-                <i class="fa fa-id-card-o fa-2x"></i>
-                <span class="nav-text">
-                            AB- Donors
-                        </span>
-            </a>
-        </li>
-
-        <li class="has-subnav">
-            <a href="/getDonors/O+">
-                <i class="fa fa-id-card-o fa-2x"></i>
-                <span class="nav-text">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/getDonors/O+">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
                             O+ Donors
-                        </span>
-            </a>
-        </li>
-
-        <li class="has-subnav">
-            <a href="/getDonors/O-">
-                <i class="fa fa-id-card-o fa-2x"></i>
-                <span class="nav-text">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/getDonors/O-">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
                             O- Donors
-                        </span>
-            </a>
-        </li>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/getDonors/AB+">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+                            AB+ Donors
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/getDonors/AB-">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+                            AB- Donors
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/perform_logout">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+                            LogOut
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <h3 >Type Of Blood: <span th:text="${word}"></span></h3>
+        <hr>
+        <div class="table-responsive-sm">
+
+            <th:block th:switch="${on}">
+                        <th:block th:case="'0'">
+                            <h1>empty</h1>
+                        </th:block>
+                        <th:block th:case="'1'">
+
+            <table class="table table-sm table-dark">
+                <thead>
+                <tr>
+
+                    <th scope="col">Name</th>
+                    <th scope="col">Blood Type</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Birth Date</th>
+                    <th scope="col">Confirm Donate Process</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="doner:${doners}">
+                    <td><span th:text="${doner.firstName}"></span> <span th:text="${doner.lastName}"></span></td>
+                    <td th:text="${doner.blodType}"></td>
+                    <td th:text="${doner.phoneNum}"></td>
+                    <td th:text="${doner.emailAdress}"></td>
+                    <td th:text="${doner.dateOfBirth}"></td>
+
+                    <th:block th:switch="${doner.getStatus()}">
+                        <th:block th:case="'yes'">
+                            <td ><a th:href="@{'/confermDonate/'+${doner.id}}">Confirm</a></td>
+                        </th:block>
+                        <th:block th:case="'no'">
+                            <td > <p th:text="${doner.getDonatDate()}" ></p></td>
+                        </th:block>
+                </tr>
+
+                </tbody>
+            </table>
+                        </th:block>
+        </div>
 
 
 
-    </ul>
-    <ul class="logout">
-        <li>
-            <a href="/perform_logout">
-                <i class="fa fa-power-off fa-2x"></i>
-                <span class="nav-text">
-                            Logout
-                        </span>
-            </a>
-        </li>
-    </ul>
-</nav>
-<h1 > number of donat: <span th:text="${number}"></span></h1>
-<div class="container">
-
-    <h1 >Type: <span th:text="${word}"></span></h1>
-    <th:block th:switch="${on}">
-        <th:block th:case="'0'">
-            <h1>empty</h1>
-        </th:block>
-        <th:block th:case="'1'">
-    <table >
-        <tr class="tableheader">
-            <td >Name</td>
-            <td>Blood Tybe</td>
-            <td>Phone</td>
-        </tr>
-        <tr th:each="doner:${doners}">
-            <td  th:text="${doner.username}"></td>
-            <td th:text="${doner.blodType}"></td>
-            <td th:text="${doner.phoneNum}"></td>
-            <td th:text="${doner.emailAdress}"></td>
-            <td th:text="${doner.dateOfBirth}"></td>
-            <td th:text="${doner.phoneNum}"></td>
-            <th:block th:switch="${doner.getStatus()}">
-                <th:block th:case="'yes'">
-            <td ><a th:href="@{'/confermDonate/'+${doner.id}}">confarm</a></td>
-                </th:block>
-                <th:block th:case="'no'">
-                    <td > <p th:text="${doner.getDonatDate()}" ></p></td>
-
-                </th:block>
 
 
-        </tr>
 
 
-    </table>
+    </main>
 </div>
-
-
-
-<script type="text/javascript" th:src="@{/js/login.js}"></script>
 </body>
 </html>

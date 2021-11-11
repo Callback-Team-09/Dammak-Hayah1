@@ -13,6 +13,7 @@ footer{
   background: #053742;
 ;
 }
+
 footer .content{
   max-width: 1350px;
   margin: auto;
@@ -23,6 +24,8 @@ footer .content{
 }
 footer .content p,a{
   color: #fff;
+
+
 }
 footer .content .box{
   width: 33%;
@@ -134,3 +137,6 @@ footer a:hover{
     padding-left: 0;
   }
 }
+
+.bottomp{
+margin: auto;}

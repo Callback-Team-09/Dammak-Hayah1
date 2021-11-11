@@ -1,0 +1,111 @@
+.form-control-primary {
+  margin: 10px;
+  opacity: 0.2;
+  border-radius-2px;
+}
+.form-control {
+  width: 960px;
+}
+
+.sidebar {
+  position:fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  z-index:100;
+  padding: 70px 0 0 10px;
+  border-right: 1px solid #d3d3d3;
+
+
+}
+
+.left-sidebar {
+  position:sticky;
+  top:0;
+  height:calc(100vh-70px);
+
+}
+
+.sidebar-nav a.nav-link{
+  color:#333;
+  font-weight:bold;
+}
+
+h3 {
+  padding-top: 1em;
+  color:#333;
+}
+
+main {
+  padding-top:100px;
+}
+
+main.card {
+  margin-bottom: 20px;
+}
+
+.left-graph{
+  padding-top:50px;
+}
+
+
+.graphPie{
+  height:0px;
+  width:0px;
+  border:150px;
+  border-radius:150px;
+  border-style:double;
+  border-top-color:green;
+  border-left-color:green;
+  border-right-color:blue;
+  border-bottom-color:green;
+}
+
+.graphPie:before, #tortaTesto1{
+  content:"Occupied ";
+  padding-left:5px;
+  font-size:16px;
+  color:#000;
+  text-aling:right;
+  width:120px;
+}
+
+.graphPie:before{
+  position:relative;
+  top:-185px;
+  right:120px;
+  border-top: 15px transparent;
+  border-down: 15px solid transparent;
+  border-rigth: 15px solid transparent;
+  border-left: 15px solid green;
+}
+
+.graphPie:after, #tortaTesto1{
+  content:"Unococupied";
+  padding-left:5px;
+  font-size:16px;
+  text-aling:left;
+  z-index:100;
+  color:#000;
+  width:120px;
+}
+
+.graphPie:after{
+  position:relative;
+  left:150px;
+  border-top: 15px transparent;
+  border-down: 15px  transparent;
+  border-rigth: 15px transparent;
+  border-left: 15px solid blue;
+}
+
+#tortaTesto{
+  padding: 10px;
+}
+
+.progress-container{
+  padding-top:5em;
+}
+.progress {
+  margin-bottom: 15px;
+}
