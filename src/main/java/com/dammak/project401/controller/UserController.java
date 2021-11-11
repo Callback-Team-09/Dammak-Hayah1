@@ -59,14 +59,19 @@ public class UserController {
     }
     @GetMapping("/")
     public String homePage (Model m){
-//        NumberDonate numberDonate = numberRepo.findByUsername("global");
-        NumberDonate numberDonate = new NumberDonate();
-        AppUser appUser = new AppUser("superAdmin","$2a$12$xg0DiQcv3q4B3c82alk0PuU43iauHo.ALJEbyL6TXO3/0vnIe51mu","","","","","","","","superAdmin","",0);
-        userRepo.save(appUser);
-numberDonate.setNumberOfUser(0);
-        numberDonate.setNumberOfDonate(0);
-        numberDonate.setUsername("global");
-        numberRepo.save(numberDonate);
+        List <NumberDonate> globalNum = (List<NumberDonate>)numberRepo.findAll();
+        if(globalNum.isEmpty()){
+            NumberDonate numberDonate = new NumberDonate();
+            AppUser appUser = new AppUser("superAdmin","$2a$12$xg0DiQcv3q4B3c82alk0PuU43iauHo.ALJEbyL6TXO3/0vnIe51mu","","","","","","","","superAdmin","",0);
+            userRepo.save(appUser);
+            numberDonate.setNumberOfUser(0);
+            numberDonate.setNumberOfDonate(0);
+            numberDonate.setUsername("global");
+            numberRepo.save(numberDonate);
+            return "home";
+        }
+
+        NumberDonate numberDonate = numberRepo.findByUsername("global");
 
         m.addAttribute("number", numberDonate.getNumberOfDonate());
         m.addAttribute("numberofuser",numberDonate.getNumberOfUser());
