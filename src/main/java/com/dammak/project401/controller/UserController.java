@@ -1,12 +1,11 @@
 package com.dammak.project401.controller;
 
-import com.dammak.project401.HospitalRepo;
-import com.dammak.project401.NumberRepo;
-import com.dammak.project401.UserRepo;
+import com.dammak.project401.Repo.HospitalRepo;
+import com.dammak.project401.Repo.NumberRepo;
+import com.dammak.project401.Repo.UserRepo;
 import com.dammak.project401.models.AppUser;
 import com.dammak.project401.models.Hospital;
 import com.dammak.project401.models.NumberDonate;
-import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

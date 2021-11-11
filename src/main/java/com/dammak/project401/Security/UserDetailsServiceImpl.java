@@ -1,6 +1,6 @@
 package com.dammak.project401.Security;
 
-import com.dammak.project401.UserRepo;
+import com.dammak.project401.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
