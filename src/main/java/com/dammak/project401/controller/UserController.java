@@ -59,15 +59,35 @@ public class UserController {
     }
     @GetMapping("/")
     public String homePage (Model m){
-        NumberDonate numberDonate = numberRepo.findByUsername("global");
-
+//        NumberDonate numberDonate = numberRepo.findByUsername("global");
+        NumberDonate numberDonate = new NumberDonate();
+        AppUser appUser = new AppUser("superAdmin","$2a$12$xg0DiQcv3q4B3c82alk0PuU43iauHo.ALJEbyL6TXO3/0vnIe51mu","","","","","","","","superAdmin","",0);
+        userRepo.save(appUser);
+numberDonate.setNumberOfUser(0);
+        numberDonate.setNumberOfDonate(0);
+        numberDonate.setUsername("global");
+        numberRepo.save(numberDonate);
 
         m.addAttribute("number", numberDonate.getNumberOfDonate());
         m.addAttribute("numberofuser",numberDonate.getNumberOfUser());
         return  "home";
     }
-//    @GetMapping("/about")
-//    public String about
+    @GetMapping("/superadmin")
+    public String superAdmin(){
+
+        return "admin";
+
+    }
+    @PostMapping("/adminaddhospital")
+    public String addHospital(@RequestParam String username, @RequestParam String password,@RequestParam String placeName){
+        Hospital hospital = new Hospital(username,password,placeName);
+        hospital.setNumnerOfDonat(0);
+        hospitalRepo.save(hospital);
+        AppUser appUser = new AppUser(username,encoder.encode(password),"a","a","a","a",placeName,"","","admin","a",0);
+        userRepo.save(appUser);
+        return "admin";
+    }
+//
     @GetMapping("/myprofile")
     public RedirectView profile(Principal p, Model m){
 
@@ -77,6 +97,9 @@ public class UserController {
 //            Hospital hospital = hospitalRepo.findByUsername(p.getName());
 //            m.addAttribute("hospitalname",p.getName());
             return  new RedirectView("/getDonors/all");
+        }else if (auth.equals("superAdmin")){
+
+            return  new RedirectView("/superadmin");
         }
 
        return new RedirectView("/profile");
@@ -100,6 +123,7 @@ public class UserController {
         model.addAttribute("userInformation", appUser);
         return "users.html";
     }
+
     @GetMapping("/allhospital")
     public String getAllHospital(Principal p,Model m){
         AppUser appUser= userRepo.findByUsername(p.getName());

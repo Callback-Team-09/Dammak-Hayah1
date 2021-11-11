@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<html lang="en" xmlns:ta="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>signup</title>
+
+</head>
+<body>
+
+<a href="/perform_logout"><h3>LogOut</h3></a>
+<main>
+    <img class="blue-circle" src="https://raw.githubusercontent.com/SSD-Coders/init/sara3/src/main/resources/images/blueCircle.png">
+
+
+
+        <form action="/adminaddhospital" method="post">
+                <legend class="legend">Add new Hospital</legend>
+                <label class="form-label">User Name</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="username" />
+
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="password" />
+                            <select class="form-label" id="placeName" name="placeName" >
+                                <option value="Amman" text="Amman">Amman</option>
+                                <option value="Irbid" text="Irbid">Irbid</option>
+                                <option value="Zarqa" text="Zarqa">Zarqa</option>
+                                <option value="Mafraq" text="Mafraq">Mafraq</option>
+                                <option value="Ajloun" text="Ajloun">Ajloun</option>
+                                <option value="Jerash" text="Jerash">Jerash</option>
+                                <option value="Madaba" text="Madaba">Madaba</option>
+                                <option value="Balqa" text="Balqa">Balqa</option>
+                                <option value="Karak" text="Karak">Karak</option>
+                                <option value="Tafileh" text="Tafileh">Tafileh</option>
+                                <option value="Maan" text="Maan">Maan</option>
+                                <option value="Aqaba" text="Aqaba">Aqaba</option>
+                            </select>
+
+
+
+                <input type="submit" class="submit"/>
+            </fieldset>
+
+
+
+        </form>
+
+
+
+
+
+
+</main>
+</body>
+</html>
