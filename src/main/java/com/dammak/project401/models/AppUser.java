@@ -36,6 +36,9 @@ public class AppUser implements UserDetails {
     private String status;
     private int numberOfDonat;
 
+    @OneToMany(mappedBy = "appUser")
+    private List<Comment> comments;
+
 
 
     public AppUser(){}
@@ -233,5 +236,13 @@ public class AppUser implements UserDetails {
 
     public void setNumberOfDonat(int numberOfDonat) {
         this.numberOfDonat = numberOfDonat;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setPosts(List<Comment> comments) {
+        this.comments = comments;
     }
 }

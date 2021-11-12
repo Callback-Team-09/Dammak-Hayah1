@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card" th:each="comment:${comments}" style="width:13%">
+  <div class="box" >
+      <img src="https://images.vexels.com/media/users/3/144066/isolated/preview/00c9f19169fbda083382d2d1bbaa5d37-comment-bubble.png" >
+    <div class="content" >
+      <h3  th:text="${comment.emailAdress}"></h3>
+      <h3  th:text="${comment.comment}"></h3>
+      <button href="#" th:text="${comment.id}"></button>
+    </div>
+
+</body>
+</html>

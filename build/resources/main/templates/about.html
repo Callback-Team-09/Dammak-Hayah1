@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:ta="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>Sign In Paga</title>
@@ -227,20 +229,22 @@
     </section>
     <section id="contact">
         <div class="contact-container container">
-            <div class="contact-img">
+
+        <div class="contact-img">
                 <img src="https://i.postimg.cc/mkNH0Cnm/cont.jpg" alt="" />
             </div>
-            <div class="form-container">
-                <h2>Contact Us</h2>
-                <input type="text" placeholder="Your Name" />
-                <input type="email" placeholder="E-Mail" />
-                <textarea
-                        cols="30"
-                        rows="6"
-                        placeholder="Type Your Message"
-                ></textarea>
-                <a href="#" class="btn btn-primary">Submit</a>
-            </div>
+<div class="form-container">
+        <form  method="POST" action="/about" >
+            <label for="emailAdress"> Email adress:</label>
+            <input type="text"  id="emailAdress" name="emailAdress">
+            <label for="username"> User name :</label>
+            <input type="text"  id="username" name="username" >
+            <label for="comment"> Comment :</label>
+            <input type="text"  id="comment" name="comment">
+            <br>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+</div>
         </div>
     </section>
 </div>

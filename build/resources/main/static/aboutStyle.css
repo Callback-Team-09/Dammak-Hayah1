@@ -384,3 +384,6 @@ section .section-title {
 .back{
 background: white;
 }
+.contact{
+  border:solid black 1px;
+}

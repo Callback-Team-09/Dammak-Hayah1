@@ -1,9 +1,11 @@
 package com.dammak.project401.controller;
 
+import com.dammak.project401.Repo.CommentRepo;
 import com.dammak.project401.Repo.HospitalRepo;
 import com.dammak.project401.Repo.NumberRepo;
 import com.dammak.project401.Repo.UserRepo;
 import com.dammak.project401.models.AppUser;
+import com.dammak.project401.models.Comment;
 import com.dammak.project401.models.Hospital;
 import com.dammak.project401.models.NumberDonate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ public class UserController {
     UserRepo userRepo;
     @Autowired
     NumberRepo numberRepo;
+    @Autowired
+    CommentRepo commentRepo;
 
 
 
@@ -38,6 +42,11 @@ public class UserController {
     {
         return "signup";
     }
+//    @GetMapping("/comment")
+//    public String getCommentsPage()
+//    {
+//        return "comment";
+//    }
 
     @GetMapping("/hello")
     public String test(){
@@ -322,5 +331,24 @@ if(direct.equals("all")){
     return new RedirectView("/getDonors/all");
 }
 
+    @GetMapping("/comment")
+    public Object commentPage(Model model, Principal principal){
+//        Comment comment= (Comment) commentRepo.findAll();
+
+        List<Comment> comments = (List<Comment>) commentRepo.findAll();
+        if (comments.isEmpty()) {
+            return new RedirectView("/admin");
+        }
+        model.addAttribute("comments",comments);
+        return "comment";
+    }
+
+        @PostMapping("/about")
+    public RedirectView addPost(String emailAdress,String comment,String username) {
+        AppUser user = userRepo.findByUsername(username);
+        Comment post1=new Comment( emailAdress,comment,user);
+        commentRepo.save(post1);
+        return new RedirectView("/about");
+    }
 
 }
